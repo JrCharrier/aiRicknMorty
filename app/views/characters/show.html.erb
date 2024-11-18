@@ -1,3 +1,18 @@
 <h2><%= @character.name %></h2>
 
+<h1>New Booking</h1>
+
+<%= simple_form_for([@character, Booking.new]) do |f| %>
+  <div class="form-group">
+    <%= f.input :start_date, label: 'Start Date', input_html: { class: 'form-control', type: 'date' } %>
+  </div>
+  <div class="form-group">
+    <%= f.input :end_date, label: 'End Date', input_html: { class: 'form-control', type: 'date' } %>
+  </div>
+  <div class="form-group">
+    <%= f.button :submit, 'Book', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+
 <%= link_to "Back", characters_path %>
