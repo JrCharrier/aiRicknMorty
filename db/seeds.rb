@@ -7,3 +7,28 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require 'open-uri'
+require 'json'
+
+url = 'https://rickandmortyapi.com/api/character'
+
+puts "Fetching characters from Rick and Morty API..."
+
+response = URI.open(url).read
+
+data = JSON.parse(response)['results']
+
+data.each do |character|
+  Character.create(
+    name: character['name'],
+    description: character['status'],
+    gender: character['gender'],
+    planet: character['location']['name'],
+    image_url: character['image'],
+    price: rand(10..100)
+  )
+  puts "Created character: #{character['name']}"
+end
+
+puts "Seeding completed!"
