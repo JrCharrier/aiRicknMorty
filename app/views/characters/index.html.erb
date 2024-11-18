@@ -1,0 +1,10 @@
+<h1>Characters</h1>
+
+<% @characters.each do |character| %>
+  <%= character.name %>
+  <%= character.description %>
+  <%= character.gender %>
+  <%= character.planet %>
+  <%= character.image_url %>
+  <%= character.price %>
+<% end %>
