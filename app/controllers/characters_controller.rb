@@ -6,17 +6,18 @@ before_action :set_character, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-    @character = Character.find(params[:id])
     @booking = Booking.new(character: @character)
   end
 
   def new
+    @character = Character.new
   end
 
   def create
     @character = Character.new(character_params)
+    @character.user = current_user
     if @character.save
-      redirect_to character_path(@character)
+      redirect_to characters_path
     else
       render 'new', status: :unprocessable_entity
     end
@@ -31,7 +32,8 @@ before_action :set_character, only: [:show, :edit, :update, :destroy]
   end
 
   def destroy
-
+    @character.destroy
+    redirect_to characters_path, status: :see_other
   end
 
   private
