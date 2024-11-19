@@ -1,2 +1,120 @@
-// Specific CSS for your home-page
+.homepage {
+  background-image: url('homepage_background.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+}
 
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-15px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  70% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.homepage-image {
+  animation: bounce 1.5s ease-in-out infinite;
+  box-shadow: 0 0 30px 15px rgba(255, 255, 255, 0.9); /* Ombre plus prononcée */
+  border-radius: 10px; /* Bordure arrondie */
+}
+
+
+@keyframes explosion {
+  0% {
+    transform: scale(1) translate(0, 0); /* Position de départ */
+    opacity: 1;
+  }
+  25% {
+    transform: scale(1.5) translate(-30px, -30px); /* Explosion dans le coin supérieur gauche */
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.5) translate(30px, -30px); /* Explosion dans le coin supérieur droit */
+    opacity: 0.8;
+  }
+  75% {
+    transform: scale(1.5) translate(-30px, 30px); /* Explosion dans le coin inférieur gauche */
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.5) translate(30px, 30px); /* Explosion dans le coin inférieur droit */
+    opacity: 0.8;
+  }
+}
+
+@keyframes boom {
+  0% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+}
+
+h1.display-4 {
+  animation: explosion 2s ease-out, boom 3s ease-in-out infinite; /* Explosion puis Boom en boucle infinie */
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+
+.btn-spatial {
+  display: inline-block;
+  padding: 20px 50px; /* Augmente la largeur en augmentant le padding horizontal */
+  background: linear-gradient(145deg, #6a11cb, #2575fc); /* Dégradé futuriste */
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px; /* Taille du texte */
+  font-weight: bold;
+  border: 2px solid transparent;
+  clip-path: polygon(10% 0%, 30% 20%, 10% 40%, 40% 50%, 10% 60%, 20% 80%, 0% 100%, 50% 100%, 100% 50%, 80% 30%, 90% 10%);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 250px; /* Assure une largeur minimale pour le bouton */
+  height: auto;
+  line-height: 1.4;
+  white-space: nowrap; /* Empêche la coupure du texte */
+}
+
+.btn-spatial .line1,
+.btn-spatial .line2 {
+  display: block;
+  font-size: 18px; /* Taille du texte sur les deux lignes */
+}
+
+.btn-spatial:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3), 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-spatial:active {
+  transform: scale(1.05);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
