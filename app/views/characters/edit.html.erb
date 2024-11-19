@@ -1,0 +1,4 @@
+<h2 class="form-title">Edit Your Character</h2>
+<%= render "form", character: @character %>
+
+<%= link_to "Back to #{@character.name}", character_path(@character) %>
