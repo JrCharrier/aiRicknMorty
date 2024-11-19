@@ -6,6 +6,7 @@ before_action :set_character, only: [:show, :edit, :update, :destroy]
   end
 
   def show
+    @booking = Booking.new(character: @character)
   end
 
   def new
@@ -42,6 +43,9 @@ before_action :set_character, only: [:show, :edit, :update, :destroy]
   end
 
   def set_character
-    @character = Character.find(params[:id])
+    @character = Character.find_by(id: params[:id])
+    unless @character
+      redirect_to characters_path, alert: "Character not found"
+    end
   end
 end
