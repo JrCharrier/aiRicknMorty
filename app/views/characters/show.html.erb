@@ -1,18 +1,24 @@
-<h2><%= @character.name %></h2>
+<div data-controller="toggle">
 
-<h1>New Booking</h1>
+  <h1><%= @character.name %></h1>
+  <img src="<%= @character.image_url %>" alt="<%= @character.name %>">
+  <p>Status: <%= @character.description %></p>
+  <p>Gender: <%= @character.gender %></p>
+  <p>Planet: <%= @character.planet %></p>
+  <p>Price: $<%= @character.price %></p>
 
-<%= simple_form_for([@character, Booking.new]) do |f| %>
-  <div class="form-group">
-    <%= f.input :start_date, label: 'Start Date', input_html: { class: 'form-control', type: 'date' } %>
+
+  <button data-action="click->toggle#fire" class="btn btn-outline-primary">Book this Character</button>
+
+  <div data-toggle-target="togglableElement" class="d-none">
+    <%= render "bookings/booking_form", character: @character %>
   </div>
-  <div class="form-group">
-    <%= f.input :end_date, label: 'End Date', input_html: { class: 'form-control', type: 'date' } %>
-  </div>
-  <div class="form-group">
-    <%= f.button :submit, 'Book', class: 'btn btn-primary' %>
-  </div>
-<% end %>
+
+  <%= link_to "Back", characters_path %>
 
 
+</div>
 <%= link_to "Back", characters_path %>
+
+<%= link_to "Edit character", edit_character_path(@character) %>
+

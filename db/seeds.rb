@@ -1,6 +1,8 @@
 require 'open-uri'
 require 'json'
 
+
+
 puts "Cleaning database..."
 Booking.destroy_all
 Character.destroy_all
@@ -31,3 +33,16 @@ data.first(15).each do |character|
 end
 
 puts "Seeding completed!"
+
+# def all_planets
+#   url = 'https://rickandmortyapi.com/api/location'
+#  planets = []
+
+#   response = URI.open(url).read
+#   data = JSON.parse(response)
+
+#   planets.concat(data['results'].map { |location| location['name'] })
+
+# end
+# PLANETS = all_planets
+# puts PLANETS
