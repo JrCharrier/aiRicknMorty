@@ -1,26 +1,25 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-
 require 'open-uri'
 require 'json'
 
+puts "Cleaning database..."
+Booking.destroy_all
+Character.destroy_all
+User.destroy_all
+
+puts "Creating users..."
+user = User.create!(
+  email: "user@example.com",
+  password: "password"
+)
+puts "Created user: #{user.email}"
+
 url = 'https://rickandmortyapi.com/api/character'
-
-puts "Fetching characters from Rick and Morty API..."
-
 response = URI.open(url).read
-
 data = JSON.parse(response)['results']
 
-data.each do |character|
-  Character.create(
+puts "Creating characters..."
+data.first(15).each do |character|
+  user.characters.create!(
     name: character['name'],
     description: character['status'],
     gender: character['gender'],
@@ -28,7 +27,7 @@ data.each do |character|
     image_url: character['image'],
     price: rand(10..100)
   )
-  puts "Created character: #{character['name']}"
+  puts "Created character: #{character['name']}" # Fix output variable
 end
 
 puts "Seeding completed!"
