@@ -1,12 +1,47 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.bg-custom-primary {
+  background-color: $dark_blue;
+  padding: 0;
+  height: 40px;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.logo {
+  max-width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
+
+.btn-search {
+  background: linear-gradient(145deg, #6a11cb, #2575fc);
+  color: white; /* Couleur du texte du bouton */
+  border: none; /* Retirer la bordure si tu veux un look plus net */
+  padding: 10px 20px; /* Ajuste l'espacement interne */
+  border-radius: 25px; /* Bord arrondi */
+  font-weight: bold; /* Texte en gras */
+  font-size: 16px; /* Taille de police ajustée */
+  display: flex; /* Utiliser Flexbox pour aligner l'icône et le texte */
+  align-items: center; /* Centrer verticalement l'icône et le texte */
+  gap: 8px; /* Espacement entre l'icône et le texte */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition pour effet interactif */
+}
+
+.btn-search i {
+  font-size: 18px; /* Ajuste la taille de l'icône */
+}
+
+.btn-search:hover {
+  transform: scale(1.05); /* Légèrement agrandi au survol */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus marquée au survol */
+}
+
+.btn-search:active {
+  transform: scale(0.98); /* Légère réduction au clic */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre moins marquée au clic */
 }

@@ -1,31 +1,37 @@
-<h1 class="text-center my-5">Rent a Character</h1>
+<div class="background-index">
 
-<div class="container">
-  <div class="row justify-content-center">
-    <% @characters.each do |character| %>
-      <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-        <%= link_to character_path(character), class: "text-decoration-none" do %>
-          <div class="card shadow-sm border-light rounded-lg">
-            <%= image_tag(character.image_url, alt: character.name, class: 'card-img-top rounded-top') %>
-            <div class="card-body p-4">
-              <h4 class="card-title text-center text-dark"><%= character.name %></h4>
+  <h1 class="text-center mb-5 pt-5 custom-title">Rent a Character</h1>
+  <div class="container">
+    <div class="row justify-content-center">
+      <% @characters.each do |character| %>
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4 position-relative">
+          <%= link_to character_path(character), class: "d-grid h-100 text-decoration-none" do %>
+            <div class="card-background shadow-sm border-light rounded-4">
+              <%= image_tag(character.image_url, alt: character.name, class: 'card-img-top w-100 img-fluid fixed-img rounded-3') %>
+              <div class="card-body p-4">
+                <h4 class="card-title text-center"><%= character.name %></h4>
 
-              <div class="mb-3">
-                <p class="card-text"><strong>Status:</strong> <%= character.description.capitalize %></p>
-                <p class="card-text"><strong>Gender:</strong> <%= character.gender %></p>
-                <p class="card-text"><strong>Planet:</strong> <%= character.planet %></p>
-              </div>
-              <div class="d-flex justify-content-between align-items-center mt-3">
-                <span class="badge bg-primary text-white">Price: <%= character.price %> $/night</span>
+                <div class="mb-3">
+                  <p class="card-text"><strong>Status:</strong> <%= character.description.capitalize %></p>
+                  <p class="card-text"><strong>Gender:</strong> <%= character.gender %></p>
+                  <p class="card-text"><strong>Planet:</strong> <%= character.planet %></p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                  <span class="badge bg-primary text-white">Price: <%= character.price %> $/night</span>
+                </div>
               </div>
             </div>
-          </div>
-           <%= link_to character_path(character), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-link btn-delete btn-sm delete-btn" do %>
-              <i class="fa-regular fa-trash-can"></i>
-            <% end %>
-        <% end %>
-      </div>
-    <% end %>
-    <%= link_to "Add a character", new_character_path %>
+          <% end %>
+          <%= link_to '<i class="fa-solid fa-explosion"></i>'.html_safe,
+                      character_path(character),
+                      data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                      },
+                      class: "btn btn-link btn-delete btn-sm delete-btn position-absolute" %>
+        </div>
+      <% end %>
+      <%= link_to "Add a character", new_character_path %>
+    </div>
   </div>
 </div>
