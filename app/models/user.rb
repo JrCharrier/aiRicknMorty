@@ -6,4 +6,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   # validates :first_name, :last_name
+
+  def owns?(character)
+    self.characters.pluck(:id).include?(character.id)
+  end
 end

@@ -6,6 +6,9 @@ before_action :set_character, only: [:show, :edit, :update, :destroy]
   end
 
   def show
+    if current_user.owns?(@character)
+    @character.bookings
+    end
     @booking = Booking.new(character: @character)
   end
 
