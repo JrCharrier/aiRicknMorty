@@ -1,7 +1,21 @@
+<div class="homepage">
+  <div class="container text-center mt-5">
+    <h1 class="display-4 fw-bold text-white">Welcome to aiRicknMorty</h1>
 
+    <p class=" homepage-content lead mt-3">
+      Embark on a wild journey through the infinite realities of the Rick & Morty universe!
+      With aiRicknMorty, you can now bring your favorite characters from the hit series into your world for an experience like no other.
+    </p>
 
-</div>
+    <div class="mt-4">
+      <%= image_tag 'homepage_image.png', class: 'img-fluid w-50 rounded shadow homepage-image', alt: 'Rick & Morty Universe' %>
+    </div>
 
-<div class= "container">
-
+    <div class="mt-5 mb-5">
+      <a href="<%= characters_path %>" class="btn btn-spatial">
+        <span class="line1">Explore</span><br>
+        <span class="line2">Characters</span>
+      </a>
+    </div>
+  </div>
 </div>
