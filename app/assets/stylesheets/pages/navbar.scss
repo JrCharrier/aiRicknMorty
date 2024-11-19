@@ -12,7 +12,7 @@
 
 .logo {
 
-  max-width: 400px;  /* Limite la taille du logo à une largeur maximale */
+  width: 40px;  /* Limite la taille du logo à une largeur maximale */
   height: auto;  /* Conserve les proportions de l'image */
   object-fit: contain;  /* L'image s'ajuste sans déformation */
 }
