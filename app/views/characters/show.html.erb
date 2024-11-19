@@ -8,17 +8,26 @@
   <p>Price: $<%= @character.price %></p>
 
 
-  <button data-action="click->toggle#fire" class="btn btn-outline-primary">Book this Character</button>
+  <% if user_signed_in? && current_user.owns?(@character) %>
+    <%= link_to "Edit character", edit_character_path(@character) %>
+    <%# afficher les bookings sur ce character %>
+    <% @character.bookings.each do |booking| %>
+      <li>
+        Booking ID: <%= booking.id %>
+        From: <%= booking.start_date.strftime("%d %b %Y") %><br>
+        To: <%= booking.end_date.strftime("%d %b %Y") %>
+      </li>
+    <% end %>
+  <% else %>
+    <button data-action="click->toggle#fire" class="btn btn-outline-primary">Book this Character</button>
 
-  <div data-toggle-target="togglableElement" class="d-none">
-    <%= render "bookings/booking_form", character: @character %>
-  </div>
+    <div data-toggle-target="togglableElement" class="d-none">
+      <%= render "bookings/booking_form", character: @character %>
+    </div>
+  <% end %>
 
 </div>
 <%= link_to "Back", characters_path %>
 
 <%= link_to "Edit character", edit_character_path(@character) %>
-
-
-
 

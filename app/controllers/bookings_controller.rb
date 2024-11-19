@@ -4,10 +4,11 @@ class BookingsController < ApplicationController
   def create
     @booking = @character.bookings.new(booking_params)
     @booking.user = current_user
+
     if @booking.save
       redirect_to character_path(@character), notice: "Booking successfully created"
     else
-      redirect_to character_path(@character), alert: "Booking could not be created"
+      redirect_to character_path(@character), alert: "Booking could not be created: #{@booking.errors.full_messages.join(', ')}"
     end
   end
 

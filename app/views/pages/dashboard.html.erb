@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row align-items-start">
+    <!-- My Bookings -->
+    <div class="col-md-4 mt-5">
+      <h2>My Bookings</h2>
+      <div>
+        <% if @my_bookings.any? %>
+          <ul class="mt-5">
+            <% @my_bookings.each_with_index do |booking, index| %>
+              <li class="mt-5">
+                <h4>Booking n°<%= index + 1 %></h4><br>
+                <strong>Character:</strong> <%= booking.character.name %><br>
+                <strong>Start Date:</strong> <%= booking.start_date %><br>
+                <strong>End Date:</strong> <%= booking.end_date %><br>
+                <strong>Status:</strong><%= booking.status == 'to_be_validated' ? ' Being validated' : booking.status %>
+
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No bookings found.</p>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- My Characters -->
+    <div class="col-md-4 mt-5">
+      <h2>My Characters</h2>
+      <div>
+        <% if @my_characters.any? %>
+          <ul class="mt-5">
+            <% @my_characters.each_with_index do |character, index| %>
+              <li class="mt-5">
+                <h4>Character n°<%= index + 1 %></h4>
+                <strong>Name:</strong> <%= character.name %><br>
+                <strong>Description:</strong> <%= character.description %><br>
+                <strong>Gender:</strong> <%= character.gender %><br>
+                <strong>Planet:</strong> <%= character.planet %><br>
+                <strong>Price:</strong> $<%= character.price %><br>
+                <strong>Status:</strong>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No characters found.</p>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- My Reservation to Confirm -->
+    <div class="col-md-4 mt-5">
+      <h2>My Reservation to Confirm</h2>
+      <div>
+        <% if @to_be_validated.any? %>
+          <ul class="mt-5">
+            <% @to_be_validated.each_with_index do |booking, index| %>
+              <li class="mt-5">
+                <h4>Booking n°<%= index + 1 %></h4><br>
+                <strong>Character:</strong> <%= booking.character.name %><br>
+                <strong>Start Date:</strong> <%= booking.start_date %><br>
+                <strong>End Date:</strong> <%= booking.end_date %><br>
+                <strong>Customers:</strong> <%= "#{booking.user.first_name} #{booking.user.last_name}" %><br>
+                <strong>Status:</strong><%= booking.status == 'to_be_validated' ? ' Being validated' : booking.status %><br>
+
+                <!-- Boutons Accepter et Refuser -->
+                <%= button_to 'Accepter', approve_booking_path(booking), method: :patch, class: 'btn btn-success', data: { confirm: 'Voulez-vous vraiment approuver cette réservation ?' } %>
+                <%= button_to 'Refuser', decline_booking_path(booking), method: :patch, class: 'btn btn-danger', data: { confirm: 'Voulez-vous vraiment refuser cette réservation ?' } %>
+              </li>
+            <% end %>
+           </ul>
+        <% else %>
+          <p>No bookings found.</p>
+        <% end %>
+      <div>
+        <!-- Content for "My Reservation to Confirm" goes here -->
+      </div>
+    </div>
+  </div>
+</div>
