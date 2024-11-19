@@ -2,7 +2,8 @@ class Character < ApplicationRecord
   belongs_to :user
   has_many :bookings
 
-  validates :name, presence: true
+  validates :name, :gender, :image_url, :price,  presence: true
+  validates :description, length: { minimum: 10 }
   PLANETS = [
     "Earth (C-137)",
     "Abadango",
