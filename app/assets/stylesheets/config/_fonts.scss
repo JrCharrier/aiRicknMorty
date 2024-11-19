@@ -14,3 +14,10 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+@font-face {
+  font-family: 'Get Schwifty'; /* Nom de la police que vous pouvez utiliser */
+  src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/3089507/get-schwifty.woff') format('woff');
+}
+
+$my-font: 'Get Schwifty', sans-serif;
