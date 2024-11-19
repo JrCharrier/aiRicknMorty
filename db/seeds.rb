@@ -9,10 +9,11 @@ Character.destroy_all
 User.destroy_all
 
 puts "Creating users..."
-user = User.create!(
+user1 = User.create!(
   email: "user@example.com",
   password: "password"
 )
+
 puts "Created user: #{user.email}"
 
 url = 'https://rickandmortyapi.com/api/character'
