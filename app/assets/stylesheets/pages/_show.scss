@@ -1,0 +1,18 @@
+.show-page {
+  background-image: url('homepage_background.png');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+.transparent-card {
+  background-color: rgba(255, 255, 255, 0.8); /* Blanc avec une opacité de 80% */
+  backdrop-filter: blur(10px); /* Effet de flou derrière la card */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Bordure subtile pour un effet esthétique */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Légère ombre pour donner du relief */
+  border-radius: 10px;
+}
