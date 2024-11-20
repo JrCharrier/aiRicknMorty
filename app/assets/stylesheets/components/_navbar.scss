@@ -17,7 +17,6 @@
   object-fit: contain;
 }
 
-
 .btn-search {
   background: linear-gradient(145deg, #6a11cb, #2575fc);
   color: white; /* Couleur du texte du bouton */
@@ -44,4 +43,24 @@
 .btn-search:active {
   transform: scale(0.98); /* Légère réduction au clic */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre moins marquée au clic */
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column; /* Empile les éléments verticalement */
+  align-items: center;    /* Centre horizontalement */
+  text-align: center;     /* Centre le texte */
+}
+
+.nav-nickname {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: $light_blue;
+  font-family: $my-font;
+}
+
+.nav-link:hover {
+  color: $light_green; /* Maintient la couleur actuelle */
+  text-decoration: none !important; /* Supprime le soulignement */
+  background-color: transparent !important; /* Supprime tout changement de fond */
 }
