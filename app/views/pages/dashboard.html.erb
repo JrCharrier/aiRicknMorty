@@ -12,7 +12,7 @@
                 <strong>Character:</strong> <%= booking.character.name %><br>
                 <strong>Start Date:</strong> <%= booking.start_date %><br>
                 <strong>End Date:</strong> <%= booking.end_date %><br>
-                <strong>Status:</strong><%= booking.status == 'to_be_validated' ? ' Being validated' : booking.status %>
+                <strong>Status: </strong><%= booking.status == 'to_be_validated' ? ' Being validated' : booking.status %>
 
               </li>
             <% end %>
@@ -38,6 +38,8 @@
                 <strong>Planet:</strong> <%= character.planet %><br>
                 <strong>Price:</strong> $<%= character.price %><br>
                 <strong>Status:</strong>
+                <%= button_to 'Details character', character_path(character), method: :get, class: 'btn btn-success' %>
+
               </li>
             <% end %>
           </ul>
@@ -60,7 +62,7 @@
                 <strong>Start Date:</strong> <%= booking.start_date %><br>
                 <strong>End Date:</strong> <%= booking.end_date %><br>
                 <strong>Customers:</strong> <%= "#{booking.user.first_name} #{booking.user.last_name}" %><br>
-                <strong>Status:</strong><%= booking.status == 'to_be_validated' ? ' Being validated' : booking.status %><br>
+                <strong>Status: </strong><%= booking.status == 'to_be_validated' ? ' Being validated' : booking.status %><br>
 
                 <!-- Boutons Accepter et Refuser -->
                 <%= button_to 'Accepter', approve_booking_path(booking), method: :patch, class: 'btn btn-success', data: { confirm: 'Voulez-vous vraiment approuver cette réservation ?' } %>
