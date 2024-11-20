@@ -65,8 +65,20 @@
   font-family: $my-font;
 }
 
-.nav-link:hover {
-  color: $light_green; /* Maintient la couleur actuelle */
-  text-decoration: none !important; /* Supprime le soulignement */
-  background-color: transparent !important; /* Supprime tout changement de fond */
+.navbar .nav-link {
+  color: #fff; /* Texte blanc par défaut */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Transition fluide */
+  text-decoration: none; /* Pas de soulignement */
+  background-color: transparent; /* Fond transparent par défaut */
+}
+
+.navbar .nav-link:hover {
+  color: $light_green; /* Change la couleur au survol */
+  text-decoration: none !important; /* Assure que rien ne soit souligné */
+  background-color: transparent !important; /* Pas de fond au survol */
+}
+.avatar-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
 }
