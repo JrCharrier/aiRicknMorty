@@ -6,10 +6,20 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @my_bookings = current_user.bookings.includes(:character)
+    @my_bookings = current_user.bookings
+                            .includes(:character)
+                            .order(
+                              Arel.sql("CASE
+                                WHEN status = 'to_be_validated' THEN 1
+                                WHEN status = 'approved' THEN 2
+                                WHEN status = 'declined' THEN 3
+                                ELSE 4
+                              END"),
+                              :start_date
+                            )
+
     @my_characters = current_user.characters
     @to_be_validated = Booking.joins(:character).where(characters: { user_id: current_user.id }, status: "to_be_validated")
-
   end
 
   def approve_booking

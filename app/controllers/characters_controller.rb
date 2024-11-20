@@ -20,7 +20,7 @@ before_action :set_character, only: [:show, :edit, :update, :destroy]
     @character = Character.new(character_params)
     @character.user = current_user
     if @character.save
-      redirect_to characters_path
+      redirect_to character_path(@character)
     else
       render 'new', status: :unprocessable_entity
     end

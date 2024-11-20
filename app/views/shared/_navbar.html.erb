@@ -36,9 +36,12 @@
     </div>
 
     <!-- Menu de la barre de navigation -->
-    <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse flex-grow-0 d-flex align-items-center flex-column text-center" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
+           <li class="nav-item ">
+              <span class="nav-nickname nav-link"><%= @user.nickname %></span>
+          </li>
           <li class="nav-item dropdown">
             <%= image_tag "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
                           class: "avatar dropdown-toggle",
