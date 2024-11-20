@@ -42,4 +42,24 @@ data.first(15).each_with_index do |character, index|
   puts "Created character: #{character['name']}"
 end
 
+puts "Creating bookings..."
+10.times do
+  Booking.create!(
+    start_date: Date.today + rand(1..10).days,
+    end_date: Date.today + rand(11..20).days,
+    status: ["to_be_validated", "approved", "declined"].sample,
+    user: user1,
+    character: characters.sample,
+    booking_number: "#{('A'..'Z').to_a.sample}#{rand(1000..9999)}#{rand(1000..9999)}"
+  )
+  Booking.create!(
+    start_date: Date.today + rand(1..10).days,
+    end_date: Date.today + rand(11..20).days,
+    status: ["to_be_validated", "approved", "declined"].sample,
+    user: user2,
+    character: characters.sample,
+    booking_number: "#{('A'..'Z').to_a.sample}#{rand(1000..9999)}#{rand(1000..9999)}"
+  )
+end
+
 puts "Seeding completed!"
