@@ -20,6 +20,7 @@ legend ~ div.form-check:first-of-type {
   font-weight: 700;
   color: $light_green;
   margin-bottom: 20px;
+  font-family: $my-font;
 }
 
 
@@ -63,6 +64,7 @@ legend ~ div.form-check:first-of-type {
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s ease;
+  font-family: $my_font;
 }
 
 .btn-submit:hover {

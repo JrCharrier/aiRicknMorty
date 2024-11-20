@@ -5,10 +5,11 @@ footer {
   color: $white;
   padding: 15px 10px;
   font-size: 12px;
-  background-image: url('planet-footer.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-image: url("planets-bckgrd.jpg");
+  background-size: cover; /* Adapte l'image pour couvrir toute la carte */
+  background-position: center; /* Centre l'image dans la carte */
+  background-repeat: no-repeat; /* Empêche la répétition de l'image */
+  object-fit: cover;
 
   .footer-container {
     border-top: 1px solid $white;
