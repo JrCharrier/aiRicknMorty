@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row align-items-start">
     <!-- My Bookings -->
-    <div class="col-md-4 mt-5">
+ <div class="col-md-4 mt-5">
   <h2>My Bookings</h2>
   <div>
     <% if @my_bookings.any? %>
       <ul class="mt-5">
-        <% @my_bookings.each_with_index do |booking, index| %>
+        <% @my_bookings.each do |booking| %>
           <li class="mt-5">
-            <h4>Booking n°<%= index + 1 %></h4><br>
+            <h4>Booking n°<%= booking.booking_number %></h4><br>
             <strong>Character:</strong> <%= booking.character.name %><br>
             <strong>Start Date:</strong> <%= booking.start_date %><br>
             <strong>End Date:</strong> <%= booking.end_date %><br>
@@ -45,6 +45,7 @@
 </div>
 
 
+
     <!-- My Characters -->
     <div class="col-md-4 mt-5">
       <h2>My Characters</h2>
@@ -59,7 +60,8 @@
                 <strong>Gender:</strong> <%= character.gender %><br>
                 <strong>Planet:</strong> <%= character.planet %><br>
                 <strong>Price:</strong> $<%= character.price %><br>
-                <strong>Status:</strong>
+               <strong>Status:</strong> <%= character.status === false ? 'Free' : character.status %><br>
+
                 <%= button_to 'Details character', character_path(character), method: :get, class: 'btn btn-success' %>
 
               </li>
@@ -77,9 +79,9 @@
       <div>
         <% if @to_be_validated.any? %>
           <ul class="mt-5">
-            <% @to_be_validated.each_with_index do |booking, index| %>
+            <% @to_be_validated.each do |booking| %>
               <li class="mt-5">
-                <h4>Booking n°<%= index + 1 %></h4><br>
+                <h4>Booking n°<%= booking.booking_number %></h4><br>
                 <strong>Character:</strong> <%= booking.character.name %><br>
                 <strong>Start Date:</strong> <%= booking.start_date %><br>
                 <strong>End Date:</strong> <%= booking.end_date %><br>
