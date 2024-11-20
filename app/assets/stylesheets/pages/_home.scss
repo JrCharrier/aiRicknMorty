@@ -77,10 +77,12 @@
 }
 
 h1.display-4 {
-  animation: explosion 2s ease-out, boom 3s ease-in-out infinite; /* Explosion puis Boom en boucle infinie */
-  font-size: 3rem;
-  font-weight: bold;
-  color: #ffffff;
+  animation: explosion 2s ease-out, boom 3s ease-in-out infinite;
+  font-family: $my-font;
+  font-size: 4rem;
+  color: $light_blue;
+  z-index: 50;
+  -webkit-text-stroke: 1px $light_green;
 }
 
 
@@ -117,4 +119,11 @@ h1.display-4 {
 .btn-spatial:active {
   transform: scale(1.05);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
