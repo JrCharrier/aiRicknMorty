@@ -1,0 +1,33 @@
+.sign-up-background {
+  background-image: url('homepage_background.png');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.7); /* Fond blanc semi-transparent pour la carte */
+  border-radius: 10px; /* Coins arrondis pour la carte */
+  padding: 20px; /* Padding intérieur */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Ombre subtile autour du formulaire */
+  backdrop-filter: blur(10px); /* Optionnel : effet flou pour améliorer la lisibilité */
+}
+
+.card-body {
+  background: transparent; /* Transparent pour le corps du formulaire */
+}
+
+.form-inputs .form-control {
+  background-color: rgba(255, 255, 255, 0.9); /* Fond semi-transparent pour les champs de saisie */
+  border: 1px solid #ddd; /* Bordure légère pour les champs */
+  box-shadow: none; /* Retirer l'ombre de la bordure */
+}
+
+.form-inputs .form-control:focus {
+  background-color: white; /* Fond blanc lors du focus sur un champ */
+  border-color: #007bff; /* Bordure bleue pour le focus */
+}
