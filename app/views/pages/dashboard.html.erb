@@ -1,13 +1,13 @@
-<div class="container">
-  <div class="row align-items-start">
-    <h1 class="text-center mb-5 pt-5 custom-title">Dashboard</h1>
+<%# <div class="container"> %>
+  <div class="homepage row align-items-start">
+    <h1 class="display-4 text-center mb-5 pt-5 custom-title">Dashboard</h1>
 
     <!-- My Bookings -->
     <div class="col-md-4 mt-5">
       <div class="card">
         <div class="card-header">
           <h2>My Bookings</h2>
-        </div>
+        </div class="card-background shadow-sm border-light rounded-4">
         <div class="card-body">
           <% if @my_bookings.any? %>
             <ul>
@@ -85,9 +85,9 @@
         <div class="card-body">
           <% if @to_be_validated.any? %>
             <ul>
-              <% @to_be_validated.each do |booking| %>
+              <% @to_be_validated.each_with_index do |booking, index| %>
                 <li>
-                  <h4>Booking n°<%= booking.booking_number %></h4><br>
+                  <h4>Booking n°<%= index + 1 %></h4><br>
                   <strong>Character:</strong> <%= booking.character.name %><br>
                   <strong>Start Date:</strong> <%= booking.start_date %><br>
                   <strong>End Date:</strong> <%= booking.end_date %><br>
@@ -106,4 +106,4 @@
     </div>
 
   </div>
-</div>
+<%# </div> %>
