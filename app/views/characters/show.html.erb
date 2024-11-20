@@ -1,36 +1,81 @@
 <div data-controller="toggle">
+  <div class="container">
+    <div class="row">
+      <!-- détails du personnage -->
+      <div class="col-md-6">
+        <h1><%= @character.name %></h1>
+        <img class="img-fluid mb-3" src="<%= @character.image_url %>" alt="<%= @character.name %>">
+        <p><strong>Status:</strong> <%= @character.description %></p>
+        <p><strong>Gender:</strong> <%= @character.gender %></p>
+        <p><strong>Planet:</strong> <%= @character.planet %></p>
+        <p><strong>Price:</strong> $<%= @character.price %></p>
 
-  <h1><%= @character.name %></h1>
-  <img src="<%= @character.image_url %>" alt="<%= @character.name %>">
-  <p>Status: <%= @character.description %></p>
-  <p>Gender: <%= @character.gender %></p>
-  <p>Planet: <%= @character.planet %></p>
-  <p>Price: $<%= @character.price %></p>
+        <!-- butons -->
+        <div class="d-flex gap-2 mt-3">
+          <%= link_to "Back", characters_path, class: "btn btn-secondary" %>
+          <% if user_signed_in? && current_user.owns?(@character) %>
+            <%= link_to "Edit character", edit_character_path(@character), class: "btn btn-primary" %>
+            <%= link_to "Delete", character_path(@character), 
+                          class: "btn btn-danger", 
+                          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+          <% end %>
+        </div>
+      </div>
 
+      <!-- booking's details -->
+      <div class="col-md-6">
+        <% if user_signed_in? && current_user.owns?(@character) %>
+          <h3><strong>Your character's booking details</strong></h3>
+          
+          <!-- past -->
+          <h4>Bookings from the past</h4>
+          <ul class="list-group mb-3">
+            <% @character.bookings.where('end_date < ?', Date.today).where.not(status: 'declined').each do |booking| %>
+              <li class="list-group-item">
+                <strong>Booking ID:</strong> <%= booking.id %><br>
+                <strong>From:</strong> <%= booking.start_date.strftime("%d %b %Y") %><br>
+                <strong>To:</strong> <%= booking.end_date.strftime("%d %b %Y") %><br>
+                <strong>Status:</strong> <%= booking.status %>
+              </li>
+            <% end %>
+          </ul>
 
-  <% if user_signed_in? && current_user.owns?(@character) %>
-    <%= link_to "Edit character", edit_character_path(@character) %>
-    <%# afficher les bookings sur ce character %>
-    <% @character.bookings.each do |booking| %>
-      <%# <li> %>
-        <%# Booking ID: <%= booking.id %>
-        <%# From: <%= bime("%d %booking.start_date.strft %Y") %>
-        <%# To: <%= booking.end_date.strftime("%d %b %Y") %>
-      <%# </li> %>
-      <li>
-        Booking ID: <%= booking.id %><br>
-        From: <%= booking.start_date.strftime("%d %b %Y") %><br>
-        To: <%= booking.end_date.strftime("%d %b %Y") %>
-      </li>
+          <!-- to come -->
+          <h4>Bookings to come</h4>
+          <ul class="list-group mb-3">
+            <% @character.bookings.where('end_date >= ?', Date.today).where.not(status: 'declined').each do |booking| %>
+              <li class="list-group-item">
+                <strong>Booking ID:</strong> <%= booking.id %><br>
+                <strong>From:</strong> <%= booking.start_date.strftime("%d %b %Y") %><br>
+                <strong>To:</strong> <%= booking.end_date.strftime("%d %b %Y") %><br>
+                <strong>Status:</strong> <%= booking.status %>
+              </li>
+            <% end %>
+          </ul>
 
-    <% end %>
-  <% else %>
-    <button data-action="click->toggle#fire" class="btn btn-outline-primary">Book this Character</button>
-
-    <div data-toggle-target="togglableElement" class="d-none">
-      <%= render "bookings/booking_form", character: @character %>
+          <!-- declined -->
+          <h4>Bookings declined</h4>
+          <ul class="list-group">
+            <% @character.bookings.where(status: 'declined').each do |booking| %>
+              <li class="list-group-item">
+                <strong>Booking ID:</strong> <%= booking.id %><br>
+                <strong>From:</strong> <%= booking.start_date.strftime("%d %b %Y") %><br>
+                <strong>To:</strong> <%= booking.end_date.strftime("%d %b %Y") %><br>
+                <strong>Status:</strong> <%= booking.status %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <button data-action="click->toggle#fire" class="btn btn-outline-primary mb-3">Book this Character</button>
+          <div data-toggle-target="togglableElement" class="d-none">
+            <%= render "bookings/booking_form", character: @character %>
+          </div>
+        <% end %>
+      </div>
     </div>
   <% end %>
 
 </div>
 <%= link_to "Back", characters_path %>
+  </div>
+</div>
