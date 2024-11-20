@@ -1,105 +1,109 @@
 <div class="container">
   <div class="row align-items-start">
+    <h1 class="text-center mb-5 pt-5 custom-title">Dashboard</h1>
+
     <!-- My Bookings -->
- <div class="col-md-4 mt-5">
-  <h2>My Bookings</h2>
-  <div>
-    <% if @my_bookings.any? %>
-      <ul class="mt-5">
-        <% @my_bookings.each do |booking| %>
-          <li class="mt-5">
-            <h4>Booking n°<%= booking.booking_number %></h4><br>
-            <strong>Character:</strong> <%= booking.character.name %><br>
-            <strong>Start Date:</strong> <%= booking.start_date %><br>
-            <strong>End Date:</strong> <%= booking.end_date %><br>
-            <strong>Status: </strong>
-              <% if booking.status == 'approved' %>
-                <%
-                  current_date = Date.today
-                  if booking.start_date > current_date
-                    days_until_start = (booking.start_date - current_date).to_i
-                    status_message = "Validated - Start in #{days_until_start} days"
-                  elsif booking.start_date <= current_date && booking.end_date >= current_date
-                    days_until_end = (booking.end_date - current_date).to_i
-                    status_message = "Validated - End in #{days_until_end} days"
-                  else
-                    status_message = "Passed"
-                  end
-                %>
-                <%= status_message %>
-              <% elsif booking.status == 'declined' %>
-                Declined
-              <% elsif booking.status == 'to_be_validated' %>
-                Being validated
-              <% else %>
-                <%= booking.status %>
+    <div class="col-md-4 mt-5">
+      <div class="card">
+        <div class="card-header">
+          <h2>My Bookings</h2>
+        </div>
+        <div class="card-body">
+          <% if @my_bookings.any? %>
+            <ul>
+              <% @my_bookings.each_with_index do |booking, index| %>
+                <li>
+                  <h4>Booking n°<%= index + 1  %></h4><br>
+                  <strong>Character:</strong> <%= booking.character.name %><br>
+                  <strong>Start Date:</strong> <%= booking.start_date %><br>
+                  <strong>End Date:</strong> <%= booking.end_date %><br>
+                  <strong>Status: </strong>
+                  <% if booking.status == 'approved' %>
+                    <span class="status-message status-validated">
+                      <% current_date = Date.today %>
+                      <% if booking.start_date > current_date %>
+                        <%= "Validated - Start in #{(booking.start_date - current_date).to_i} days" %>
+                      <% elsif booking.start_date <= current_date && booking.end_date >= current_date %>
+                        <%= "Validated - End in #{(booking.end_date - current_date).to_i} days" %>
+                      <% else %>
+                        <%= "Passed" %>
+                      <% end %>
+                    </span>
+                  <% elsif booking.status == 'declined' %>
+                    <span class="status-message status-passed">Declined</span>
+                  <% elsif booking.status == 'to_be_validated' %>
+                    <span class="status-message status-being-validated">Being validated</span>
+                  <% else %>
+                    <%= booking.status %>
+                  <% end %>
+                  <%= button_to 'Booking details', character_path(booking.character), method: :get, class: 'btn btn-success' %>
+                </li>
               <% end %>
-            <%= button_to 'Booking details', character_path(booking.character), method: :get, class: 'btn btn-success' %>
-          </li>
-        <% end %>
-      </ul>
-    <% else %>
-      <p>No bookings found.</p>
-    <% end %>
-  </div>
-</div>
-
-
+            </ul>
+          <% else %>
+            <p class="no-bookings">No bookings found.</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
     <!-- My Characters -->
     <div class="col-md-4 mt-5">
-      <h2>My Characters</h2>
-      <div>
-        <% if @my_characters.any? %>
-          <ul class="mt-5">
-            <% @my_characters.each_with_index do |character, index| %>
-              <li class="mt-5">
-                <h4>Character n°<%= index + 1 %></h4>
-                <strong>Name:</strong> <%= character.name %><br>
-                <strong>Description:</strong> <%= character.description %><br>
-                <strong>Gender:</strong> <%= character.gender %><br>
-                <strong>Planet:</strong> <%= character.planet %><br>
-                <strong>Price:</strong> $<%= character.price %><br>
-               <strong>Status:</strong> <%= character.status === false ? 'Free' : character.status %><br>
-
-                <%= button_to 'Details character', character_path(character), method: :get, class: 'btn btn-success' %>
-
-              </li>
-            <% end %>
-          </ul>
-        <% else %>
-          <p>No characters found.</p>
-        <% end %>
+      <div class="card">
+        <div class="card-header">
+          <h2>My Characters</h2>
+        </div>
+        <div class="card-body">
+          <% if @my_characters.any? %>
+            <ul>
+              <% @my_characters.each_with_index do |character, index| %>
+                <li>
+                  <h4>Character n°<%= index + 1 %></h4>
+                  <strong>Name:</strong> <%= character.name %><br>
+                  <strong>Description:</strong> <%= character.description %><br>
+                  <strong>Gender:</strong> <%= character.gender %><br>
+                  <strong>Planet:</strong> <%= character.planet %><br>
+                  <strong>Price:</strong> $<%= character.price %><br>
+                  <strong>Status:</strong> <%= character.status === false ? 'Free' : character.status %><br>
+                  <%= button_to 'Details character', character_path(character), method: :get, class: 'btn btn-success' %>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p class="no-bookings">No characters found.</p>
+          <% end %>
+        </div>
       </div>
     </div>
 
     <!-- My Reservation to Confirm -->
     <div class="col-md-4 mt-5">
-      <h2>My Reservation to Confirm</h2>
-      <div>
-        <% if @to_be_validated.any? %>
-          <ul class="mt-5">
-            <% @to_be_validated.each do |booking| %>
-              <li class="mt-5">
-                <h4>Booking n°<%= booking.booking_number %></h4><br>
-                <strong>Character:</strong> <%= booking.character.name %><br>
-                <strong>Start Date:</strong> <%= booking.start_date %><br>
-                <strong>End Date:</strong> <%= booking.end_date %><br>
-                <strong>Customers:</strong> <%= "#{booking.user.first_name} #{booking.user.last_name}" %><br>
-                <strong>Status: </strong><%= booking.status == 'to_be_validated' ? ' Being validated' : booking.status %><br>
-
-                <!-- Boutons Accepter et Refuser -->
-                <%= button_to 'Accepter', approve_booking_path(booking), method: :patch, class: 'btn btn-success', data: { confirm: 'Voulez-vous vraiment approuver cette réservation ?' } %>
-                <%= button_to 'Refuser', decline_booking_path(booking), method: :patch, class: 'btn btn-danger', data: { confirm: 'Voulez-vous vraiment refuser cette réservation ?' } %>
-              </li>
-            <% end %>
-           </ul>
-        <% else %>
-          <p>No bookings found.</p>
-        <% end %>
-      <div>
-        <!-- Content for "My Reservation to Confirm" goes here -->
+      <div class="card">
+        <div class="card-header">
+          <h2>My Reservation to Confirm</h2>
+        </div>
+        <div class="card-body">
+          <% if @to_be_validated.any? %>
+            <ul>
+              <% @to_be_validated.each do |booking| %>
+                <li>
+                  <h4>Booking n°<%= booking.booking_number %></h4><br>
+                  <strong>Character:</strong> <%= booking.character.name %><br>
+                  <strong>Start Date:</strong> <%= booking.start_date %><br>
+                  <strong>End Date:</strong> <%= booking.end_date %><br>
+                  <strong>Customers:</strong> <%= "#{booking.user.first_name} #{booking.user.last_name}" %><br>
+                  <strong>Status: </strong><%= booking.status == 'to_be_validated' ? 'Being validated' : booking.status %><br>
+                  <%= button_to 'Accept', approve_booking_path(booking), method: :patch, class: 'btn btn-success', data: { confirm: 'Do you really want to approve this booking?' } %>
+                  <%= button_to 'Decline', decline_booking_path(booking), method: :patch, class: 'btn btn-danger', data: { confirm: 'Do you really want to decline this booking?' } %>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p class="no-bookings">No bookings found.</p>
+          <% end %>
+        </div>
       </div>
     </div>
+
   </div>
 </div>
