@@ -3,8 +3,8 @@
 footer {
   background-color: $dark_blue;
   color: $white;
-  padding: 15px 10px; // Réduction des padding
-  font-size: 12px; // Réduction de la taille de police globale
+  padding: 15px 10px;
+  font-size: 12px;
   background-image: url('planet-footer.jpg');
   background-size: cover;
   background-position: center;
@@ -12,11 +12,11 @@ footer {
 
   .footer-container {
     border-top: 1px solid $white;
-    padding-top: 10px; // Réduction du padding supérieur
-    display: flex; // Pour que les blocs soient sur la même ligne
-    justify-content: space-between; // Espacement égal entre les colonnes
-    gap: 20px; // Espace entre les blocs
-    flex-wrap: nowrap; // Empêche les blocs de se déplacer sur plusieurs lignes
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: nowrap;
 
     a {
       color: $white;
@@ -27,7 +27,7 @@ footer {
     }
 
     .social-links a {
-      font-size: 16px; // Taille des icônes réduite
+      font-size: 16px;
       color: $white;
       &:hover {
         color: $light_blue;
@@ -36,10 +36,10 @@ footer {
   }
 
   .footer-bottom {
-    margin-top: 20px; // Augmentation de l'espacement vertical pour la section inférieure
-    padding-top: 10px; // Réduction du padding supérieur
+    margin-top: 20px;
+    padding-top: 10px;
     border-top: 1px solid $white;
-    font-size: 10px; // Réduction de la taille de police dans la section inférieure
+    font-size: 10px;
     color: $white;
     display: flex;
     justify-content: space-between;
@@ -47,32 +47,32 @@ footer {
     text-decoration: none;
 
     div {
-      margin-right: 10px; // Espacement entre le texte de copyright et les liens sociaux
+      margin-right: 10px;
     }
   }
 
   .footer-bottom a {
     color: $white;
     text-decoration: none;
-    font-size: 10px; // Réduction de la taille des liens
+    font-size: 10px;
   }
 }
 
 @media (max-width: 768px) {
   .footer-container {
-    flex-direction: column; // Empile les éléments sur petits écrans
-    align-items: center; // Centrer les colonnes
-    text-align: center; // Centrer le texte dans chaque bloc
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .footer-bottom {
-    flex-direction: column; // Organiser la partie inférieure en colonne sur petits écrans
+    flex-direction: column;
     align-items: center;
   }
 
   .footer-bottom div {
     margin-right: 0;
-    margin-bottom: 10px; // Espacement entre les éléments dans la partie inférieure
+    margin-bottom: 10px;
   }
 
   .social-links {
