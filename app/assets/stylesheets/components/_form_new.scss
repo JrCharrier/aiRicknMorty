@@ -4,7 +4,7 @@ legend ~ div.form-check:first-of-type {
 
 .form-container {
   max-width: 500px;
-  margin: 50px auto;
+  margin: 20px auto;
   padding: 30px;
   background: $dark_blue;
   border-radius: 10px;
@@ -22,10 +22,6 @@ legend ~ div.form-check:first-of-type {
   margin-bottom: 20px;
 }
 
-/* Groupes de champs */
-.form-group {
-  margin-bottom: 20px;
-}
 
 /* Label */
 .form-label {
@@ -76,4 +72,8 @@ legend ~ div.form-check:first-of-type {
 /* Actions */
 .form-actions {
   text-align: center;
+}
+
+.full-back {
+  display: flex;
 }
