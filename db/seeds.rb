@@ -13,18 +13,28 @@ user1 = User.create!(
   email: "user@example.com",
   password: "password"
 )
+user2 = User.create!(
+  email: "user_2@example.com",
+  password: "password"
+)
 
-puts "Created user: #{user.email}"
+puts "Created users"
 
 url = 'https://rickandmortyapi.com/api/character'
 response = URI.open(url).read
 data = JSON.parse(response)['results']
 
 puts "Creating characters..."
-data.first(15).each do |character|
+p data.first
+data.first(15).each_with_index do |character, index|
+  if index < 5
+    user = user1
+  else
+    user = user2
+  end
   user.characters.create!(
     name: character['name'],
-    description: character['status'],
+    description: ['status'],
     gender: character['gender'],
     planet: character['location']['name'],
     image_url: character['image'],

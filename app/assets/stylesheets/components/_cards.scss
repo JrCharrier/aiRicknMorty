@@ -1,0 +1,32 @@
+.card-img-top {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+
+.card-background {
+  background-color: $dark_blue;
+  color: $white;
+  padding: 30px 20px;
+  font-size: 14px;
+}
+
+.card-title {
+  color: $light_green;
+  font-weight: bolder;
+  font-size: 32px;
+  padding: 12px;
+}
+
+.delete-btn {
+  bottom: 30px;
+  right: 30px;
+  z-index: 10;
+  color: $light_blue;
+  text-decoration: none;
+}
+
+.delete-btn:hover {
+  color: $light_green;
+}
