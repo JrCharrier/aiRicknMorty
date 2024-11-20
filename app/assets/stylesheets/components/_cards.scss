@@ -11,7 +11,7 @@
   background-size: cover; /* Adapte l'image pour couvrir toute la carte */
   background-position: center; /* Centre l'image dans la carte */
   background-repeat: no-repeat; /* Empêche la répétition de l'image */
-  object-fit: cover;
+  object-fit: contain;
   color: $white;
   padding: 30px 20px;
   font-size: 14px;

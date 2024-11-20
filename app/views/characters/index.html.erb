@@ -22,16 +22,20 @@
               </div>
             </div>
           <% end %>
-          <%= link_to '<i class="fa-solid fa-explosion"></i>'.html_safe,
+          <% if user_signed_in? && current_user.owns?(character) %>
+                  <%= link_to '<i class="fa-solid fa-explosion"></i>'.html_safe,
                       character_path(character),
                       data: {
-                        turbo_method: :delete,
-                        turbo_confirm: "Are you sure?"
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
                       },
                       class: "btn btn-link btn-delete btn-sm delete-btn position-absolute" %>
+              <% end %>
+
+
+
         </div>
       <% end %>
-      <%= link_to "Add a character", new_character_path %>
     </div>
   </div>
 </div>
