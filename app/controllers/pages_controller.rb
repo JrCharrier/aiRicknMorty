@@ -8,7 +8,8 @@ class PagesController < ApplicationController
   def dashboard
     @my_bookings = current_user.bookings.includes(:character)
     @my_characters = current_user.characters
-    @to_be_validated = current_user.bookings.includes(:character).where(status: "to_be_validated")
+    @to_be_validated = Booking.joins(:character).where(characters: { user_id: current_user.id }, status: "to_be_validated")
+
   end
 
   def approve_booking

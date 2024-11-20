@@ -12,11 +12,17 @@
     <%= link_to "Edit character", edit_character_path(@character) %>
     <%# afficher les bookings sur ce character %>
     <% @character.bookings.each do |booking| %>
+      <%# <li> %>
+        <%# Booking ID: <%= booking.id %>
+        <%# From: <%= bime("%d %booking.start_date.strft %Y") %>
+        <%# To: <%= booking.end_date.strftime("%d %b %Y") %>
+      <%# </li> %>
       <li>
-        Booking ID: <%= booking.id %>
+        Booking ID: <%= booking.id %><br>
         From: <%= booking.start_date.strftime("%d %b %Y") %><br>
         To: <%= booking.end_date.strftime("%d %b %Y") %>
       </li>
+
     <% end %>
   <% else %>
     <button data-action="click->toggle#fire" class="btn btn-outline-primary">Book this Character</button>
@@ -30,4 +36,3 @@
 <%= link_to "Back", characters_path %>
 
 <%= link_to "Edit character", edit_character_path(@character) %>
-
