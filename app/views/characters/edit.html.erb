@@ -1,4 +1,13 @@
-<h2 class="form-title">Edit Your Character</h2>
-<%= render "form", character: @character %>
-
-<%= link_to "Back to #{@character.name}", character_path(@character) %>
+<div class="background-index d-flex flex-column">
+  <div class="form-container d-flex flex-column align-items-center justify-content-start">
+    <div class="form-header">
+      <h2 class="form-title text-center mb-3 text-white">Edit Your Character</h2>
+    </div>
+    <div class="form-body">
+      <%= render "form", character: @character %>
+    </div>
+  </div>
+  <div class="form-actions text-center mt-4">
+    <%= link_to "Back", character_path(@character), class: "btn btn-secondary mb-5" %>
+  </div>
+</div>
