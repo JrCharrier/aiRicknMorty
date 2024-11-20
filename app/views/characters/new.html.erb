@@ -1,13 +1,13 @@
-<div class="background-index">
+<div class="background-index d-flex flex-column">
   <div class="form-container d-flex flex-column align-items-center justify-content-start">
     <div class="form-header">
-      <h2 class="form-title text-center mb-5 pt-5 text-white">Create Your Character</h2>
+      <h2 class="form-title text-center mb-3 text-white">Create Your Character</h2>
     </div>
     <div class="form-body">
       <%= render "form", character: @character %>
     </div>
   </div>
   <div class="form-actions text-center mt-4">
-    <%= link_to "Back", characters_path, class: "btn btn-secondary" %>
+    <%= link_to "Back", characters_path, class: "btn btn-secondary mb-5" %>
   </div>
 </div>
