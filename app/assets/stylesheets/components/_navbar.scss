@@ -1,5 +1,10 @@
 .bg-custom-primary {
   background-color: $dark_blue;
+  background-image: url("planets-bckgrd.jpg");
+  background-size: cover; /* Adapte l'image pour couvrir toute la carte */
+  background-position: center; /* Centre l'image dans la carte */
+  background-repeat: no-repeat; /* Empêche la répétition de l'image */
+  object-fit: cover;
   padding: 0;
   height: 40px;
 }
@@ -16,6 +21,7 @@
   height: auto;
   object-fit: contain;
 }
+
 
 .btn-search {
   background: linear-gradient(145deg, #6a11cb, #2575fc);
@@ -64,4 +70,3 @@
   text-decoration: none !important; /* Supprime le soulignement */
   background-color: transparent !important; /* Supprime tout changement de fond */
 }
-
