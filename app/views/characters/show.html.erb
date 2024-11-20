@@ -32,50 +32,56 @@
           <div class="card shadow-sm">
             <div class="card-body">
               <% if user_signed_in? && current_user.owns?(@character) %>
-                <h3 class="card-title mb-4"><strong>Your Character's Booking Details</strong></h3>
+                <h3 class="card-title mb-4 text-center"><strong>Your Character's Booking Details</strong></h3>
 
                 <!-- Past Bookings -->
-                <h5>Past Bookings</h5>
+                <h5 class="mb-3">Past Bookings</h5>
                 <ul class="list-group mb-4">
                   <% @character.bookings.where('end_date < ?', Date.today).where.not(status: 'declined').each do |booking| %>
-                    <li class="list-group-item">
-                      <strong>Booking ID:</strong> <%= booking.id %><br>
-                      <strong>From:</strong> <%= booking.start_date.strftime("%d %b %Y") %><br>
-                      <strong>To:</strong> <%= booking.end_date.strftime("%d %b %Y") %><br>
-                      <strong>Status:</strong> <%= booking.status %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <div>
+                        <strong>Booking ID:</strong> <%= booking.id %><br>
+                        <strong>From:</strong> <%= booking.start_date.strftime("%d %b %Y") %><br>
+                        <strong>To:</strong> <%= booking.end_date.strftime("%d %b %Y") %><br>
+                        <strong>Status:</strong> <span class="badge badge-primary"><%= booking.status %></span>
+                      </div>
                     </li>
                   <% end %>
                 </ul>
 
                 <!-- Upcoming Bookings -->
-                <h5>Upcoming Bookings</h5>
+                <h5 class="mb-3">Upcoming Bookings</h5>
                 <ul class="list-group mb-4">
                   <% @character.bookings.where('end_date >= ?', Date.today).where.not(status: 'declined').each do |booking| %>
-                    <li class="list-group-item">
-                      <strong>Booking ID:</strong> <%= booking.id %><br>
-                      <strong>From:</strong> <%= booking.start_date.strftime("%d %b %Y") %><br>
-                      <strong>To:</strong> <%= booking.end_date.strftime("%d %b %Y") %><br>
-                      <strong>Status:</strong> <%= booking.status %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <div>
+                        <strong>Booking ID:</strong> <%= booking.id %><br>
+                        <strong>From:</strong> <%= booking.start_date.strftime("%d %b %Y") %><br>
+                        <strong>To:</strong> <%= booking.end_date.strftime("%d %b %Y") %><br>
+                        <strong>Status:</strong> <span class="badge badge-info"><%= booking.status %></span>
+                      </div>
                     </li>
                   <% end %>
                 </ul>
 
                 <!-- Declined Bookings -->
-                <h5>Declined Bookings</h5>
+                <h5 class="mb-3">Declined Bookings</h5>
                 <ul class="list-group">
                   <% @character.bookings.where(status: 'declined').each do |booking| %>
-                    <li class="list-group-item">
-                      <strong>Booking ID:</strong> <%= booking.id %><br>
-                      <strong>From:</strong> <%= booking.start_date.strftime("%d %b %Y") %><br>
-                      <strong>To:</strong> <%= booking.end_date.strftime("%d %b %Y") %><br>
-                      <strong>Status:</strong> <%= booking.status %>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <div>
+                        <strong>Booking ID:</strong> <%= booking.id %><br>
+                        <strong>From:</strong> <%= booking.start_date.strftime("%d %b %Y") %><br>
+                        <strong>To:</strong> <%= booking.end_date.strftime("%d %b %Y") %><br>
+                        <strong>Status:</strong> <span class="badge badge-danger"><%= booking.status %></span>
+                      </div>
                     </li>
                   <% end %>
                 </ul>
               <% else %>
                 <!-- Booking Form -->
                 <div class="text-center">
-                  <button data-action="click->toggle#fire" class="btn btn-outline-primary mb-3">Book this Character</button>
+                  <button data-action="click->toggle#fire" class="btn btn-outline-primary mb-3">Book Your Sidekick...</button>
                   <div data-toggle-target="togglableElement" class="d-none">
                     <%= render "bookings/booking_form", character: @character %>
                   </div>
@@ -84,6 +90,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
