@@ -1,0 +1,13 @@
+.sticky-column {
+  position: sticky;
+  top: 0;
+  bottom: 50px; /* Ajuste cette valeur pour laisser un peu d'espace avant le footer */
+  max-height: calc(100vh - 150px); /* Remplace 150px par la hauteur de ton footer */
+  overflow-y: auto;  /* Permet de scroller si le contenu dépasse */
+}
+
+
+.sticky-column .card-body {
+  max-height: 80vh; /* Limite la hauteur de la section défilante */
+  overflow-y: auto; /* Défilement vertical */
+}
