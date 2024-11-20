@@ -7,17 +7,29 @@
 
 .card-background {
   background-color: $dark_blue;
+  background-image: url("planets-bckgrd.jpg");
+  background-size: cover; /* Adapte l'image pour couvrir toute la carte */
+  background-position: center; /* Centre l'image dans la carte */
+  background-repeat: no-repeat; /* Empêche la répétition de l'image */
+  object-fit: cover;
   color: $white;
   padding: 30px 20px;
   font-size: 14px;
 }
 
+.card-background:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+  filter: brightness(1.2);
+}
+
 .card-title {
-  color: $light_green;
+  color: $dark_blue;
   font-weight: bolder;
   font-size: 32px;
   padding: 12px;
 }
+
 
 .delete-btn {
   bottom: 30px;
@@ -29,4 +41,9 @@
 
 .delete-btn:hover {
   color: $light_green;
+}
+
+.badge {
+  background-color: $light_green;
+  color: $dark_blue;
 }

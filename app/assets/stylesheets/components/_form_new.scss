@@ -1,0 +1,79 @@
+legend ~ div.form-check:first-of-type {
+  clear: left;
+}
+
+.form-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background: $dark_blue;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+/* Titre */
+.form-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: $light_green;
+  margin-bottom: 20px;
+}
+
+/* Groupes de champs */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Label */
+.form-label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Champ de saisie */
+.form-input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background: #222;
+  color: #fff;
+}
+
+.form-input:focus {
+  border-color: $light_green;
+  outline: none;
+  box-shadow: 0 0 5px rgba(163, 197, 130, 0.3);
+}
+
+/* Bouton de soumission */
+.btn-submit {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  background: $light_green;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-submit:hover {
+  background: $dark_green;
+}
+
+/* Actions */
+.form-actions {
+  text-align: center;
+}

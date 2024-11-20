@@ -1,29 +1,27 @@
-<div class="form-container">
   <%= simple_form_for(character) do |f| %>
     <div class="form-group">
-      <%= f.input :name, label: "Character name", input_html: { class: "form-input" }, label_html: { class: "form-label" } %>
+      <%= f.input :name, label: "Character name", input_html: { class: "form-input" }, label_html: { class: "form-label text-white" } %>
     </div>
     <div class="form-group">
-      <%= f.input :description, label: "Type your description here", input_html: { class: "form-input" }, label_html: { class: "form-label" } %>
+      <%= f.input :description, label: "Type your description here", input_html: { class: "form-input" }, label_html: { class: "form-label text-white" } %>
     </div>
     <div class="form-group">
-      <%= f.input :gender, input_html: { class: "form-input" }, label_html: { class: "form-label" } %>
+      <%= f.input :gender, input_html: { class: "form-input" }, label_html: { class: "form-label text-white" } %>
     </div>
     <div class="form-group">
       <%= f.input :planet,
           collection: Character::PLANETS,
           prompt: "Select a planet",
           input_html: { class: "form-input" },
-          label_html: { class: "form-label" } %>
+          label_html: { class: "form-label text-white" } %>
     </div>
     <div class="form-group">
-      <%= f.input :image_url %>
+      <%= f.input :image_url , label_html: { class: "form-label text-white" } %>
     </div>
     <div class="form-group">
-      <%= f.input :price, input_html: { class: "form-input" }, label_html: { class: "form-label" } %>
+      <%= f.input :price, input_html: { class: "form-input" }, label_html: { class: "form-label text-white" } %>
     </div>
     <div class="form-actions">
       <%= f.submit "Submit", class: "btn btn-submit" %>
     </div>
   <% end %>
-</div>

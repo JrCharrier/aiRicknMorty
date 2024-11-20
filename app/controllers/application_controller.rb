@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :set_user
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -11,4 +11,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :nickname])
   end
 
+  private
+
+  def set_user
+    @user = current_user if user_signed_in?
+  end
 end
