@@ -2,14 +2,10 @@ class CharactersController < ApplicationController
 before_action :set_character, only: [:show, :edit, :update, :destroy]
 
   def index
-    @characters = Character.all
     if params[:query].present?
-      sql_subquery = <<~SQL
-        moviecharacters.title @@ :query
-        OR characters.synopsis @@ :query
-        OR users.nickname @@ :query
-      SQL
-      @characters = @characters.joins(:user).where(sql_subquery, query: params[:query])
+      @find_character = Character.global_search(params[:query])
+    else
+      @find_character = Character.all
     end
   end
 
