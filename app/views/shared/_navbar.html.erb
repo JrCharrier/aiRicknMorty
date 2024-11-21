@@ -9,20 +9,21 @@
     <% end %>
 
     <!-- Barre de recherche -->
-    <div class="d-flex align-items-center">
-      <form class="d-flex align-items-center">
-        <!-- Champ Characters -->
-        <div class="col-auto me-3">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Characters">
-        </div>
+    <div class="row justify-content-center">
+      <div class="col-sm-8 my-3">
+        <%= form_with url: characters_path, method: :get, class: "d-flex search-form align-items-center" do %>
+          <%= text_field_tag :query,
+                params[:query],
+                class: "form-control search-input",
+                placeholder: "Find your fucking character" %>
 
-        <!-- Bouton Rechercher -->
-        <div class="col-auto">
-          <button type="submit" class="btn btn-search">
-            <i class="fa-brands fa-searchengin"></i> Search
-          </button>
-        </div>
-      </form>
+          <div class="col-auto">
+            <%= button_tag type: "submit", name: "", class: "btn btn-search ms-3" do %>
+              <i class="fa-brands fa-searchengin"></i> Search
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
 
     <!-- Menu de la barre de navigation -->

@@ -23,6 +23,16 @@ class Character < ApplicationRecord
     "Purge Planet"
   ]
 
+  include PgSearch::Model
+  pg_search_scope :global_search,
+  against: [ :name, :description ],
+  associated_against: {
+    user: [ :nickname ]
+  },
+  using: {
+    tsearch: { prefix: true }
+  }
+
   def available?(start_date, end_date)
     bookings.where('start_date < ? AND end_date > ?', end_date, start_date).empty?
   end

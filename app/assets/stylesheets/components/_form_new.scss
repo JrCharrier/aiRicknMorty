@@ -84,3 +84,15 @@ legend ~ div.form-check:first-of-type {
 .flatpickr-disabled:hover {
   background-color: #f8d7da !important;
 }
+
+.search-input {
+  min-width: 300px;
+  width: 100%; /* Prend la largeur disponible dans son conteneur */
+  max-width: 600px; /* Facultatif : limite la taille maximale */
+  border-radius: 20px;
+}
+
+.search-form {
+  max-width: 600px; /* Limitez la largeur de la barre de recherche */
+  width: 100%; /* S'adapte à la largeur du conteneur */
+}
