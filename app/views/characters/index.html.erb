@@ -8,8 +8,8 @@
       <% @find_character.each do |character| %>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4 position-relative">
           <%= link_to character_path(character), class: "d-grid h-100 text-decoration-none" do %>
-            <div class="card-background shadow-sm border-light rounded-4">
-              <%= image_tag(character.image_url, alt: character.name, class: 'card-img-top w-100 img-fluid fixed-img rounded-3') %>
+            <div class="card-background shadow-sm border-light">
+              <%= image_tag(character.image_url, alt: character.name, class: 'card-img-top w-100 img_bordered img-fluid fixed-img') %>
               <div class="card-body p-4">
                 <h4 class="card-title text-center text-white"><%= character.name %></h4>
 

@@ -3,7 +3,7 @@ class Character < ApplicationRecord
   has_many :bookings, dependent: :destroy
 
   validates :name, :gender, :image_url, :price, presence: true
-  validates :description, length: { minimum: 10 }
+  validates :description, length: { minimum: 5 }
   GENDERS = [
     "Female",
     "Male",
