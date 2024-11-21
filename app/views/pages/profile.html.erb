@@ -1,0 +1,35 @@
+<div class="background-index d-flex flex-column">
+  <div class="container mt-5">
+    <div>
+      <h1 class="custom-subtitle text-center mb-4">Profile of <%= @user.nickname || "User" %></h1>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-body text-white">
+            <div class="mb-3">
+              <strong>Nickname:</strong> <%= @user.nickname %>
+            </div>
+            <div class="mb-3">
+              <strong>First Name:</strong> <%= @user.first_name %>
+            </div>
+            <div class="mb-3">
+              <strong>Last Name:</strong> <%= @user.last_name %>
+            </div>
+            <div class="mb-3">
+              <strong>Email:</strong> <%= @user.email %>
+            </div>
+            <div class="mb-3">
+              <strong>Created:</strong> <%= @user.created_at.strftime("%B %d, %Y") %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4 mb-4">
+      <a href="<%= edit_user_registration_path %>" class="btn btn-search">Change my information</a>
+    </div>
+  </div>
+</div>
