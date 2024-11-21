@@ -109,8 +109,8 @@
                     <p><strong>Customer:</strong> <%= "#{booking.user.first_name} #{booking.user.last_name}" %></p>
                     <p><strong>Status:</strong> <%= booking.status == 'to_be_validated' ? 'Being validated' : booking.status %></p>
                     <div class="d-flex gap-2">
-                      <%= button_to 'Accept', approve_booking_path(booking), method: :patch, class: 'btn btn-success btn-sm', data: { confirm: 'Do you really want to approve this booking?' } %>
-                      <%= button_to 'Decline', decline_booking_path(booking), method: :patch, class: 'btn btn-danger btn-sm', data: { confirm: 'Do you really want to decline this booking?' } %>
+                      <%= button_to 'Accept', approve_booking_path(booking), method: :patch, class: 'btn btn-success-db btn-sm', data: { confirm: 'Do you really want to approve this booking?' } %>
+                      <%= button_to 'Decline', decline_booking_path(booking), method: :patch, class: 'btn btn-danger-db btn-sm', data: { confirm: 'Do you really want to decline this booking?' } %>
                     </div>
                   </li>
                 <% end %>

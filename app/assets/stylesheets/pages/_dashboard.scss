@@ -14,6 +14,17 @@ $white: #FFF9F3;
   overflow: hidden;
 }
 
+.btn-danger-db {
+  background: linear-gradient(145deg, #ff5f6d, #ffc371);
+  border-color: linear-gradient(145deg, #6a11cb, #2575fc);
+  border-radius: 10px;
+}
+
+.btn-success-db {
+  background: linear-gradient(145deg, #6a11cb, #2575fc);
+  border-color: linear-gradient(145deg, #ff5f6d, #ffc371);
+  border-radius: 10px;
+}
 
 .container-db {
   padding: 1rem;
@@ -93,9 +104,9 @@ $white: #FFF9F3;
 }
 
 .sticky-column {
-  position: sticky;
-  top: 0;
-  bottom: 50px; /* Ajuste cette valeur pour laisser un peu d'espace avant le footer */
+  // position: sticky;
+  // top: 0;
+  // bottom: 50px; /* Ajuste cette valeur pour laisser un peu d'espace avant le footer */
   max-height: calc(100vh - 150px); /* Remplace 150px par la hauteur de ton footer */
   overflow-y: auto; /* Permet de scroller si le contenu dépasse */
 
