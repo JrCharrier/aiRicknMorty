@@ -4,6 +4,16 @@ $light_green: rgb(163, 197, 130);
 $light_blue: #4CA1B4;
 $white: #FFF9F3;
 
+.small-card {
+  height: 340px !important;
+}
+
+.smaller-card {
+  margin-bottom: 25px;
+  height: 143px;
+  overflow: hidden;
+}
+
 
 .container-db {
   padding: 1rem;
@@ -14,7 +24,7 @@ $white: #FFF9F3;
 
 .card-background-db {
   background-color: $dark_blue;
-  background-image: url("planets-bckgrd.jpg");
+  background-image: url("planets-bckgrd.jpg") !important;
   background-size: cover; /* Adapte l'image pour couvrir toute la carte */
   background-position: center; /* Centre l'image dans la carte */
   background-repeat: no-repeat; /* Empêche la répétition de l'image */
