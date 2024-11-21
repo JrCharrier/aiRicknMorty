@@ -8,7 +8,7 @@
       <%= f.input :description, label: false, input_html: { class: "form-control", placeholder: "Type your description" } %>
     </div>
     <div class="mb-3">
-      <%= f.input :gender, label: false, input_html: { class: "form-control", placeholder: "Gender" } %>
+      <%= f.input :gender, collection: Character::GENDERS,prompt: "Select a gender", label: false, input_html: { class: "form-control", placeholder: "Gender" } %>
     </div>
     <div class="mb-3">
       <%= f.input :planet, collection: Character::PLANETS, prompt: "Select a planet", label: false, input_html: { class: "form-control", placeholder: "Planet" } %>

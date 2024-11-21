@@ -10,6 +10,15 @@
               <%= f.error_notification class: "alert alert-danger" %>
 
               <div class="form-inputs">
+                <!-- Nickname -->
+                <div class="mb-3">
+                  <%= f.input :nickname,
+                              required: false,
+                              label: false,
+                              input_html: { class: "form-control", placeholder: "Nickname" } %>
+                </div>
+
+                <!-- Email -->
                 <div class="mb-3">
                   <%= f.input :email, required: true, autofocus: true, label: false, input_html: { class: "form-control", placeholder: "Email" } %>
                 </div>
@@ -18,6 +27,7 @@
                   <p class="text-warning">Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
                 <% end %>
 
+                <!-- New Password -->
                 <div class="mb-3">
                   <%= f.input :password,
                               hint: "Leave it blank if you don't want to change it",
@@ -25,16 +35,21 @@
                               label: false,
                               input_html: { class: "form-control", placeholder: "New Password", autocomplete: "new-password" } %>
                 </div>
+
+                <!-- Confirm Password -->
                 <div class="mb-3">
                   <%= f.input :password_confirmation,
                               required: false,
                               label: false,
                               input_html: { class: "form-control", placeholder: "Confirm New Password", autocomplete: "new-password" } %>
                 </div>
+
+                <!-- Current Password -->
                 <div class="mb-3">
                   <%= f.input :current_password,
                               hint: "We need your current password to confirm your changes",
                               required: true,
+                              label: false,
                               input_html: { class: "form-control", placeholder: "Current Password", autocomplete: "current-password" } %>
                 </div>
               </div>
