@@ -1,13 +1,20 @@
-<div class="background-index d-flex flex-column">
-  <div class="form-container d-flex flex-column align-items-center justify-content-start">
-    <div class="form-header">
-      <h2 class="form-title text-center mb-3 text-white title-form">Create Your Character</h2>
+<div class="sign-up-background">
+  <div class="container mb-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="text-center text-white">
+            <h2 class="custom-subtitle text-center">Create Your Character</h2>
+          </div>
+          <div class="card-body">
+            <!-- Appel à la partial _form pour afficher le formulaire -->
+            <%= render "form", character: @character %>
+          </div>
+          <div class="card-footer text-center">
+            <%= link_to "Back", characters_path, class: "btn btn-secondary" %>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="form-body">
-      <%= render "form", character: @character %>
-    </div>
-  </div>
-  <div class="form-actions text-center mt-4">
-    <%= link_to "Back", characters_path, class: "btn btn-secondary mb-5" %>
   </div>
 </div>
