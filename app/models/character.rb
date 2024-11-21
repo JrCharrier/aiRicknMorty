@@ -1,6 +1,6 @@
 class Character < ApplicationRecord
   belongs_to :user
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
 
   validates :name, :gender, :image_url, :price,  presence: true
   validates :description, length: { minimum: 10 }
@@ -15,4 +15,8 @@ class Character < ApplicationRecord
     "Post-Apocalyptic Earth",
     "Purge Planet"
   ]
+
+  def available?(start_date, end_date)
+    bookings.where('start_date < ? AND end_date > ?', end_date, start_date).empty?
+  end
 end

@@ -75,3 +75,12 @@ legend ~ div.form-check:first-of-type {
 .full-back {
   display: flex;
 }
+
+.flatpickr-disabled {
+  text-decoration: line-through !important;
+  color: red !important;
+}
+
+.flatpickr-disabled:hover {
+  background-color: #f8d7da !important;
+}
