@@ -3,6 +3,14 @@ before_action :set_character, only: [:show, :edit, :update, :destroy]
 
   def index
     @characters = Character.all
+    if params[:query].present?
+      sql_subquery = <<~SQL
+        moviecharacters.title @@ :query
+        OR characters.synopsis @@ :query
+        OR users.nickname @@ :query
+      SQL
+      @characters = @characters.joins(:user).where(sql_subquery, query: params[:query])
+    end
   end
 
   def show
@@ -10,6 +18,9 @@ before_action :set_character, only: [:show, :edit, :update, :destroy]
     @character.bookings
     end
     @booking = Booking.new(character: @character)
+    @all_bookings = Booking.pluck(:start_date, :end_date).map do |start_date, end_date|
+      [start_date.to_s, end_date.to_s]
+    end
   end
 
   def new
@@ -52,3 +63,8 @@ before_action :set_character, only: [:show, :edit, :update, :destroy]
     end
   end
 end
+
+
+
+# dans la vue show
+# mettre en valeur

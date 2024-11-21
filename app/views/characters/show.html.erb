@@ -83,7 +83,7 @@
                 <div class="text-center">
                   <button data-action="click->toggle#fire" class="btn btn-outline-primary mb-3">Book Your Sidekick...</button>
                   <div data-toggle-target="togglableElement" class="d-none">
-                    <%= render "bookings/booking_form", character: @character %>
+                    <%= render "bookings/booking_form", character: @character, all_bookings: @all_bookings %>
                   </div>
                 </div>
               <% end %>
