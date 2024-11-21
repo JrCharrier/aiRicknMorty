@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   get "/dashboard", to: "pages#dashboard", as: :dashboard
   patch 'bookings/:id/approve', to: 'pages#approve_booking', as: 'approve_booking'
   patch 'bookings/:id/decline', to: 'pages#decline_booking', as: 'decline_booking'
+  get 'profile', to: 'pages#profile', as: :profile
+
 end

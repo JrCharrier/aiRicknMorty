@@ -3,7 +3,9 @@
   <h1 class="text-center mb-5 pt-5 custom-title">Rent a Character</h1>
   <div class="container">
     <div class="row justify-content-center">
-      <% @characters.each do |character| %>
+
+    <% if @find_character.any? %>
+      <% @find_character.each do |character| %>
         <div class="col-lg-4 col-md-6 col-sm-12 mb-4 position-relative">
           <%= link_to character_path(character), class: "d-grid h-100 text-decoration-none" do %>
             <div class="card-background shadow-sm border-light rounded-4">
@@ -36,6 +38,9 @@
 
         </div>
       <% end %>
+      <% else %>
+      <em>Sorry, no character found.</em>
+        <% end %>
     </div>
   </div>
 </div>

@@ -70,6 +70,8 @@
   transition: color 0.3s ease, background-color 0.3s ease; /* Transition fluide */
   text-decoration: none; /* Pas de soulignement */
   background-color: transparent; /* Fond transparent par défaut */
+  position: sticky;
+  top: 0;
 }
 
 .navbar .nav-link:hover {
