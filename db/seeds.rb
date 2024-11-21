@@ -10,7 +10,7 @@ puts "Creating users..."
 user1 = User.create!(
   first_name: "Niko",
   last_name: "Nitrax",
-  nickname: "NikoNitrax64",
+  nickname: "Nitrax64",
   email: "user@example.com",
   password: "password"
 )
