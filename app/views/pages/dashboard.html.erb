@@ -1,36 +1,39 @@
 <div class="background-index d-flex flex-column">
+
   <div class="container mb-5">
+
     <div class="row align-items-start">
+
       <h1 class="custom-title text-center pt-5">Dashboard</h1>
 
       <!-- My Bookings -->
-      <div class="col-md-4 mt-5">
+      <div class="col-md-4 mt-5 sticky-column">
         <div class="card shadow">
-          <div class="card-header bg-primary text-white">
-            <h2><i class="fas fa-book"></i> My Bookings</h2>
+          <div class="card-db text-white-db">
+            <h2><i></i> <b>My Bookings</b></h2>
           </div>
-          <div class="card-body">
+
+          <div class="card-body" style="height: 400px; overflow-y: auto;">
             <% if @my_bookings.any? %>
               <ul class="list-unstyled">
                 <% @my_bookings.each_with_index do |booking, index| %>
-                  <li class="mb-3">
-                    <h5>Booking n°<%= index + 1 %></h5>
-                    <p><strong>Character:</strong> <%= booking.character.name %></p>
-                    <p><strong>Start Date:</strong> <%= booking.start_date %></p>
-                    <p><strong>End Date:</strong> <%= booking.end_date %></p>
-                    <p><strong>Status:</strong>
-                      <% if booking.status == 'approved' %>
-                        <span class="badge bg-success">
-                          Validated
-                        </span>
-                      <% elsif booking.status == 'declined' %>
-                        <span class="badge bg-danger">Declined</span>
-                      <% else %>
-                        <span class="badge bg-warning">Pending</span>
-                      <% end %>
-                    </p>
-                    <%= button_to 'Details', character_path(booking.character), method: :get, class: 'btn btn-primary btn-sm' %>
-                  </li>
+                  <a href="<%= character_path(booking.character) %>" style="text-decoration: none;">
+                    <li class="mb-3 border-bottom container-db card-background-db shadow-sm border-light rounded-4">
+                      <h3 class="bold-text">Booking n°<%= index + 1 %></h3>
+                      <p><strong>Character:</strong> <%= booking.character.name %></p>
+                      <p><strong>Start Date:</strong> <%= booking.start_date %></p>
+                      <p><strong>End Date:</strong> <%= booking.end_date %></p>
+                      <p><strong>Status:</strong>
+                        <% if booking.status == 'approved' %>
+                          <span class="badge bg-lightgreen text-darkblue">Validated</span>
+                        <% elsif booking.status == 'declined' %>
+                          <span class="badge bg-danger text-white">Declined</span>
+                        <% else %>
+                          <span class="badge bg-lightblue text-darkgreen">Pending</span>
+                        <% end %>
+                      </p>
+                    </li>
+                  </a>
                 <% end %>
               </ul>
             <% else %>
@@ -40,25 +43,27 @@
         </div>
       </div>
 
-      <!-- My Characters (Sticky column) -->
+      <!-- My Characters -->
       <div class="col-md-4 mt-5 sticky-column">
         <div class="card shadow">
-          <div class="card-header bg-info text-white">
-            <h2><i class="fas fa-users"></i> My Characters</h2>
+          <div class="card-db text-white-db">
+            <h2><b>My Characters</b></h2>
           </div>
-          <div class="card-body">
+
+          <div class="card-body" style="height: 400px; overflow-y: auto;">
             <% if @my_characters.any? %>
-              <ul class="list-unstyled" style="max-height: 400px; overflow-y: auto;">
+              <ul class="list-unstyled">
                 <% @my_characters.each_with_index do |character, index| %>
-                  <li class="mb-3 border-bottom">
-                    <h5>Character n°<%= index + 1 %></h5>
-                    <p><strong>Name:</strong> <%= character.name %></p>
-                    <p><strong>Description:</strong> <%= character.description %></p>
-                    <p><strong>Gender:</strong> <%= character.gender %></p>
-                    <p><strong>Planet:</strong> <%= character.planet %></p>
-                    <p><strong>Price:</strong> $<%= character.price %></p>
-                    <p><strong>Status:</strong> <%= character.status == false ? 'Available' : character.status %></p>
-                    <%= button_to 'Details', character_path(character), method: :get, class: 'btn btn-info btn-sm' %>
+                  <li class="mb-3 border-bottom container-db card-background-db shadow-sm border-light rounded-4">
+                    <a href="<%= character_path(character) %>" style="text-decoration: none; color: inherit;">
+                      <h3 class="bold-text">Character n°<%= index + 1 %></h3>
+                      <p><strong>Name:</strong> <%= character.name %></p>
+                      <p><strong>Description:</strong> <%= character.description %></p>
+                      <p><strong>Gender:</strong> <%= character.gender %></p>
+                      <p><strong>Planet:</strong> <%= character.planet %></p>
+                      <p><strong>Price:</strong> $<%= character.price %></p>
+                      <p><strong>Status:</strong> <%= character.status == false ? 'Available' : character.status %></p>
+                    </a>
                   </li>
                 <% end %>
               </ul>
@@ -69,35 +74,49 @@
         </div>
       </div>
 
-      <!-- My Pending Reservations -->
-      <div class="col-md-4 mt-5">
+      <!-- Profile & Pending Bookings -->
+
+      <div class="col-md-4 mt-5 sticky-column">
         <div class="card shadow">
-          <div class="card-header bg-warning text-dark">
-            <h2><i class="fas fa-calendar-check"></i> Pending reservations</h2>
+          <div class="card-db text-white-db">
+            <h2><i></i> <b>Pending Bookings</b></h2>
           </div>
-          <div class="card-body">
-            <% if @to_be_validated.any? %>
-              <ul class="list-unstyled">
-                <% @to_be_validated.each_with_index do |booking, index| %>
-                  <li class="mb-3">
-                    <h5>Booking n°<%= index + 1 %></h5>
-                    <p><strong>Character:</strong> <%= booking.character.name %></p>
-                    <p><strong>Start Date:</strong> <%= booking.start_date %></p>
-                    <p><strong>End Date:</strong> <%= booking.end_date %></p>
-                    <p><strong>Customer:</strong> <%= "#{booking.user.first_name} #{booking.user.last_name}" %></p>
-                    <p><strong>Status:</strong> <%= booking.status == 'to_be_validated' ? 'Being validated' : booking.status %></p>
-                    <%= button_to 'Accept', approve_booking_path(booking), method: :patch, class: 'btn btn-success btn-sm', data: { confirm: 'Do you really want to approve this booking?' } %>
-                    <%= button_to 'Decline', decline_booking_path(booking), method: :patch, class: 'btn btn-danger btn-sm', data: { confirm: 'Do you really want to decline this booking?' } %>
-                  </li>
-                <% end %>
-              </ul>
-            <% else %>
-              <p class="text-muted">No bookings found.</p>
-            <% end %>
+
+          <div class="card-body" style="height: 400px; overflow-y: auto;">
+  <% if @to_be_validated.any? %>
+    <ul class="list-unstyled" style="max-height: 200px; overflow-y: auto;">
+      <% @to_be_validated.each_with_index do |booking, index| %>
+        <li class="mb-3 border-bottom container-db card-background-db shadow-sm border-light rounded-4">
+          <h3 class="bold-text">Booking n°<%= index + 1 %></h3>
+          <p><strong>Character:</strong> <%= booking.character.name %></p>
+          <p><strong>Start Date:</strong> <%= booking.start_date %></p>
+          <p><strong>End Date:</strong> <%= booking.end_date %></p>
+          <p><strong>Customer:</strong> <%= "#{booking.user.first_name} #{booking.user.last_name}" %></p>
+          <p><strong>Status:</strong> <%= booking.status == 'to_be_validated' ? 'Being validated' : booking.status %></p>
+          <div class="d-flex gap-2">
+            <%= button_to 'Accept', approve_booking_path(booking), method: :patch, class: 'btn btn-success btn-sm', data: { confirm: 'Do you really want to approve this booking?' } %>
+            <%= button_to 'Decline', decline_booking_path(booking), method: :patch, class: 'btn btn-danger btn-sm', data: { confirm: 'Do you really want to decline this booking?' } %>
           </div>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p class="text-muted">No bookings found.</p>
+  <% end %>
+</div>
+
+        </div>
+      </div>
+
+
+
+
+
         </div>
       </div>
 
     </div>
+
   </div>
+
 </div>
