@@ -15,4 +15,5 @@ class Character < ApplicationRecord
     "Post-Apocalyptic Earth",
     "Purge Planet"
   ]
+  
 end
