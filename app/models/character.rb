@@ -20,7 +20,8 @@ class Character < ApplicationRecord
     "Interdimensional Cable",
     "Immortality Field Resort",
     "Post-Apocalyptic Earth",
-    "Purge Planet"
+    "Purge Planet",
+    "Testicle Monster Dimension"
   ]
   
 

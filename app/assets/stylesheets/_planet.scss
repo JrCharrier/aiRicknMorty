@@ -1,19 +1,25 @@
-// #planet-paragraph {
-//   position: relative; // Assure que le conteneur de l'image est positionné correctement
-// }
+#planet-container {
+  position: relative; // Nécessaire pour le positionnement absolu de l'image
+}
 
-// #planet-image-container {
-//   position: absolute; // Positionne l'image de manière indépendante
-//   left: 100%; // Place l'image à droite du texte
-//   top: 0; // Aligne l'image avec le texte
-//   // transform: translateX(-50%); // L'image commence cachée (hors écran)
-//   // opacity: 0; // Rendre invisible initialement
-//   transition: transform 0.5s ease, opacity 0.5s ease; // Animation fluide
-//   z-index: 10; // Superposition au-dessus des autres éléments si nécessaire
-// }
+#planet-text {
+  cursor: pointer;
+}
 
-// #planet-image-container.visible {
-//   transform: translateX(0) !important;
-//   opacity: 1 !important;
-// }
+#planet-image-container {
+  position: absolute;
+  left: 72%; // Rapproche l'image du texte
+  top: 0; // Aligne verticalement avec le texte
+  opacity: 0; // L'image est invisible au départ
+  transform: scale(0.8); // L'image est légèrement réduite au départ
+  transition: opacity 0.5s ease, transform 0.5s ease; // Animation fluide
+  width: 120px; // Taille plus grande
+  height: 120px;
+  border-radius: 12px; // Arrondir légèrement les bords
+}
 
+#planet-container:hover #planet-image-container,
+#planet-container.active #planet-image-container {
+  opacity: 1; // Rendre l'image visible
+  transform: scale(1); // Taille normale
+}
