@@ -22,6 +22,7 @@ class Character < ApplicationRecord
     "Post-Apocalyptic Earth",
     "Purge Planet"
   ]
+  
 
   include PgSearch::Model
   pg_search_scope :global_search,

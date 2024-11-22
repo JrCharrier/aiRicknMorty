@@ -1,0 +1,19 @@
+// #planet-paragraph {
+//   position: relative; // Assure que le conteneur de l'image est positionné correctement
+// }
+
+// #planet-image-container {
+//   position: absolute; // Positionne l'image de manière indépendante
+//   left: 100%; // Place l'image à droite du texte
+//   top: 0; // Aligne l'image avec le texte
+//   // transform: translateX(-50%); // L'image commence cachée (hors écran)
+//   // opacity: 0; // Rendre invisible initialement
+//   transition: transform 0.5s ease, opacity 0.5s ease; // Animation fluide
+//   z-index: 10; // Superposition au-dessus des autres éléments si nécessaire
+// }
+
+// #planet-image-container.visible {
+//   transform: translateX(0) !important;
+//   opacity: 1 !important;
+// }
+
