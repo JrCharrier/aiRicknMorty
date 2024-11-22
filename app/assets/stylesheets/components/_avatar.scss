@@ -18,3 +18,13 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
 }
+
+.profile-img {
+  width: 100px; /* Définir une largeur fixe */
+  height: 100px; /* Assurer que la hauteur est identique à la largeur */
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 50%; /* 50% pour rendre les coins circulaires */
+  object-fit: cover; /* Garantir que l'image reste proportionnée et remplisse la zone */
+}
