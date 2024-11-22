@@ -1,4 +1,4 @@
-<div class="background-index d-flex flex-column">
+<div class="background-index d-flex flex-column min-height">
   <div class="container mt-5">
     <div>
       <h1 class="custom-subtitle text-center mb-4">Profile of <%= @user.nickname || "User" %></h1>
@@ -6,7 +6,7 @@
 
     <div class="row justify-content-center">
       <div class="col-md-4">
-        <div class="card shadow-sm">
+        <div class="card-background-profile shadow-sm position-relative">
           <div class="card-body text-white">
             <div class="mb-3">
               <strong>Nickname:</strong> <%= @user.nickname %>
@@ -22,6 +22,9 @@
             </div>
             <div class="mb-3">
               <strong>Created:</strong> <%= @user.created_at.strftime("%B %d, %Y") %>
+            </div>
+              <%= image_tag "https://www.powertrafic.fr/wp-content/uploads/2023/04/image-ia-exemple.png", alt: "avatar", class: "profile-img" %>
+              <%= link_to '<i class="fa-solid fa-pen"></i>'.html_safe, "", class: "pencil-edit" %>
             </div>
           </div>
         </div>

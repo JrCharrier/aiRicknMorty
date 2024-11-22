@@ -15,23 +15,26 @@
           <div class="card-body" style="height: 400px; overflow-y: auto;">
   <% if @my_bookings.any? %>
     <ul class="list-unstyled">
-      <% @my_bookings.each_with_index do |booking, index| %>
-          <li class="mb-3 border-bottom container-db card-background-db shadow-sm border-light rounded-4">
-            <h3 class="bold-text">Booking n°<%= index + 1 %></h3>
-            <p>Character: <strong><%= booking.character.name %></strong></p>
-            <p>Start Date: <strong><%= booking.start_date %></strong></p>
-            <p>End Date: <strong><%= booking.end_date %></strong></p>
-            <p>Status:
-              <% if booking.status == 'approved' %>
-                <span class="badge bg-lightgreen text-darkblue">Validated</span>
-              <% elsif booking.status == 'declined' %>
-                <span class="badge bg-danger text-white">Declined</span>
-              <% else %>
-                <span class="badge bg-lightblue text-darkgreen">Pending</span>
-              <% end %>
-            </p>
-          </li>
-        </a>
+        <% @my_bookings.each_with_index do |booking, index| %>
+          <li class="mb-3 border-bottom container-db card-background-db shadow-sm border-light rounded-4 position-relative">
+            <a href="<%= character_path(booking.character) %>" style="text-decoration: none; color: inherit;">
+              <h3 class="bold-text">Booking n°<%= index + 1 %></h3>
+              <p>Character: <strong><%= booking.character.name %></strong></p>
+              <p>Start Date: <strong><%= booking.start_date %></strong></p>
+              <p>End Date: <strong><%= booking.end_date %></strong></p>
+              <%= image_tag(booking.character.image_url, class: "img-view-db") %>
+              <p>Status:
+                <% if booking.status == 'approved' %>
+                  <span class="badge bg-lightgreen text-darkblue">Validated</span>
+                <% elsif booking.status == 'declined' %>
+                  <span class="badge bg-danger text-white">Declined</span>
+                <% else %>
+                  <span class="badge bg-lightblue text-darkgreen">Pending</span>
+                <% end %>
+              </p>
+            </a>
+            </li>
+          </a>
       <% end %>
     </ul>
   <% else %>
@@ -55,14 +58,15 @@
             <% if @my_characters.any? %>
               <ul class="list-unstyled">
                 <% @my_characters.each_with_index do |character, index| %>
-                  <li class="mb-3 border-bottom container-db card-background-db shadow-sm border-light rounded-4">
+                  <li class="mb-3 border-bottom container-db card-background-db shadow-sm border-light rounded-4 position-relative">
                     <a href="<%= character_path(character) %>" style="text-decoration: none; color: inherit;">
                       <h3 class="bold-text">Character n°<%= index + 1 %></h3>
                       <p>Name: <strong><%= character.name %></strong></p>
-                      <p>Description: <strong><%= character.description %></strong></p>
+                      <p>Description: <strong><%= character.description.capitalize %></strong></p>
                       <p>Gender: <strong><%= character.gender %></strong></p>
                       <p>Planet: <strong><%= character.planet %></strong></p>
                       <p>Price: <strong>$<%= character.price %></strong></p>
+                      <%= image_tag(character.image_url, class: "img-view-db") %>
                       <p>Status: <strong><%= character.status == false ? 'Available' : character.status %></strong></p>
                     </a>
                   </li>
@@ -103,13 +107,14 @@
           </div>
           <div class="card-body" style="height: 400px; overflow-y: auto;">
             <% if @to_be_validated.any? %>
-              <ul class="list-unstyled" style="max-height: 200px; overflow-y: auto;">
+              <ul class="list-unstyled" style="max-height: 200px;">
                 <% @to_be_validated.each_with_index do |booking, index| %>
-                  <li class="mb-3 border-bottom container-db card-background-db shadow-sm border-light rounded-4">
+                  <li class="mb-3 border-bottom container-db card-background-db shadow-sm border-light rounded-4 position-relative">
                     <h3 class="bold-text">Booking n°<%= index + 1 %></h3>
                     <p><strong>Character:</strong> <%= booking.character.name %></p>
                     <p><strong>Start Date:</strong> <%= booking.start_date %></p>
                     <p><strong>End Date:</strong> <%= booking.end_date %></p>
+                    <%= image_tag(booking.character.image_url, class: "img-view-pending") %>
                     <p><strong>Customer:</strong> <%= "#{booking.user.first_name} #{booking.user.last_name}" %></p>
                     <p><strong>Status:</strong> <%= booking.status == 'to_be_validated' ? 'Being validated' : booking.status %></p>
                     <div class="d-flex gap-2">

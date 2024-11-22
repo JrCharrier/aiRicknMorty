@@ -15,7 +15,7 @@ before_action :set_character, only: [:show, :edit, :update, :destroy]
     end
     @booking = Booking.new(character: @character)
     @all_bookings = Booking.pluck(:start_date, :end_date).map do |start_date, end_date|
-      [start_date.to_s, end_date.to_s]
+      [start_date.to_s, end_date.to_s] # Format SQL standard
     end
   end
 

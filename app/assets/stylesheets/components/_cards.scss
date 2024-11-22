@@ -54,3 +54,17 @@
   border-radius: 10px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
 }
+
+.card-background-profile {
+  background-color: $dark_blue;
+  background-image: url("rick_fuckyou.jpg");
+  background-size: cover; /* Adapte l'image pour couvrir toute la carte */
+  background-position: center; /* Centre l'image dans la carte */
+  background-repeat: no-repeat; /* Empêche la répétition de l'image */
+  object-fit: contain;
+  color: $white;
+  padding: 30px 20px;
+  font-size: 14px;
+  border-radius: 12px;
+  background-blend-mode: soft-light;
+}
