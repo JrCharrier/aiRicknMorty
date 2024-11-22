@@ -11,9 +11,30 @@
               <img class="img-fluid  mb-3 img_bordered" src="<%= @character.image_url %>" alt="<%= @character.name %>">
               <p><strong>Description:</strong> <%= @character.description.capitalize %></p>
               <p><strong>Gender:</strong> <%= @character.gender %></p>
-              <p><strong>Planet:</strong> <%= @character.planet %></p>
-              <p><strong>Owner:</strong>
-              <% if @user.owns?(@character)%>
+
+            <div id = "planet-container" data-controller = "planettrigger">
+              <p id="planet-paragraph">
+
+                <div id = "planet-text" data-action = "click->planettrigger#showplanet">
+                <strong>Planet:</strong>
+                  <span id="planet-name" style="cursor: pointer;">
+                    <%= @character.planet %>
+                   </span>
+                </div>
+                  <div data-planettrigger-target ="image" class="d-none" >
+
+                  <span id="planet-image-container" style="position: absolute;" >
+                   <%= image_tag planet_image(@character.planet), 
+                   alt: "#{@character.planet} Image", 
+                   id: "planet-image",
+                   style: "width: 170px; height: 110px; border-radius: 10px;" %>
+                  
+                  </span>
+                </div>
+                </p>
+           </div>
+              <p><strong>Owner:</strong> 
+              <% if @user.owns?(@character)%> 
                 me </p>
               <% else %>
                 <%= @character.user.nickname %>
