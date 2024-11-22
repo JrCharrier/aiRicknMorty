@@ -12,14 +12,14 @@
               <p><strong>Description:</strong> <%= @character.description %></p>
               <p><strong>Gender:</strong> <%= @character.gender %></p>
               <p><strong>Planet:</strong> <%= @character.planet %></p>
-              <p><strong>Owner:</strong> 
-              <% if @user.owns?(@character)%> 
+              <p><strong>Owner:</strong>
+              <% if @user.owns?(@character)%>
                 me </p>
               <% else %>
                 <%= @character.user.email %> <%# changer email par nickname %>
               <% end %></p>
               <p><strong>Price:</strong> <%= @character.price %>€/day</p>
-              
+
               <div class="d-flex justify-content-center gap-2 mt-3">
                 <%= link_to "Back", characters_path, class: "btn btn-back" %>
                 <% if user_signed_in? && current_user.owns?(@character) %>
@@ -101,10 +101,11 @@
 
               <% else %>
                 <!-- Booking Form -->
-                <div class="text-center">
-                  <button data-action="click->toggle#fire" class="btn btn-outline-primary mb-3">Book Your Sidekick...</button>
+                <div class="text-center" data-controller="datepicker">
+                  <button data-action="click->toggle#fire" class="btn btn-cancel mb-3">Book Your Sidekick...</button>
                   <div data-toggle-target="togglableElement" class="d-none">
                     <%= render "bookings/booking_form", character: @character, all_bookings: @all_bookings %>
+                  <p data-datepicker-target="price" class="estimated-price mt-3"></p>
                   </div>
                 </div>
               <% end %>
