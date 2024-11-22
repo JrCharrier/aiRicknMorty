@@ -15,13 +15,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, allow_blank: true
 #   validate  :avatar_format
 
-# private
-
-#   def avatar_format
-#     if avatar.attached? && !avatar.content_type.in?(%w(image/jpeg image/png))
-#       errors.add(:avatar, 'must be a JPEG or PNG')
-#     elsif avatar.attached? && avatar.byte_size > 100.megabytes
-#       errors.add(:avatar, 'size should be less than 5MB')
-#     end
-#   end
+  def owns?(character)
+    self.characters.pluck(:id).include?(character.id)
+  end
 end
