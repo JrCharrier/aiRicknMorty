@@ -1,18 +1,20 @@
 <h2>...Don’t Be a Loser! 💥</h2>
 
 <%= simple_form_for [@character, @booking] do |f| %>
-
   <div class="form-group">
     <%= f.input :start_date,
                 as: :string,
-                label: "Start Date",
+                label: false,
+                placeholder: "Put your fuckin' dates baby",
                 input_html: {
-                  data: { controller: "datepicker",
-                  datepicker_bookings: @all_bookings.to_json
+                  data: {
+                    # controller: "datepicker",
+                    datepicker_bookings: @all_bookings.to_json,
+                    datepicker_price_per_day: @character.price,
+                    datepicker_target: "range"
                   }
                 } %>
   </div>
 
-    <%= f.submit "Book me baby, book me hard!", class: "btn btn-search" %>
-
+  <%= f.submit "Book me baby, book me hard!", class: "btn btn-search" %>
 <% end %>

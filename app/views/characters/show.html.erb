@@ -122,10 +122,11 @@
 
               <% else %>
                 <!-- Booking Form -->
-                <div class="text-center">
-                  <button data-action="click->toggle#fire" class="btn btn-outline-primary mb-3">Book Your Sidekick...</button>
+                <div class="text-center" data-controller="datepicker">
+                  <button data-action="click->toggle#fire" class="btn btn-cancel mb-3">Book Your Sidekick...</button>
                   <div data-toggle-target="togglableElement" class="d-none">
                     <%= render "bookings/booking_form", character: @character, all_bookings: @all_bookings %>
+                  <p data-datepicker-target="price" class="estimated-price mt-3"></p>
                   </div>
                 </div>
               <% end %>
