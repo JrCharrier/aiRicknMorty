@@ -30,13 +30,17 @@
     <div class="collapse navbar-collapse flex-grow-0 d-flex align-items-center flex-column text-center" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <span class="nav-nickname nav-link"><%= @user.nickname %></span>
-          </li>
+          <%# <li class="nav-item">
+
+          </li> %>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link d-flex align-items-center dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-              <%= image_tag "https://www.powertrafic.fr/wp-content/uploads/2023/04/image-ia-exemple.png", alt: "avatar", class: "rounded-circle me-2 avatar-icon" %>
-              <span>Account</span>
+              <span class="nav-nickname nav-link"><%= @user.nickname %></span>
+              <% if current_user&.avatar.present? %>
+                  <%= cl_image_tag(current_user.avatar.key, class: 'avatar-icon') %>
+                <% else %>
+                  <%= image_tag('https://static1.srcdn.com/wordpress/wp-content/uploads/2017/04/Rick-and-Morty-Mr.-Meeseeks.jpg', class: 'avatar-icon') %>
+                <% end %>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "My profile", profile_path, class: "dropdown-item" %>

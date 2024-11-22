@@ -110,6 +110,19 @@
   }
 }
 
+
+.avatar-icon-db {
+    width: 100px;
+    object-fit: contain;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+  }
+
 .img-view-db {
   border-radius: 50%;
   position: absolute;
