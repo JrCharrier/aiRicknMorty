@@ -7,15 +7,12 @@
                 as: :string,
                 label: "Start Date",
                 input_html: {
-                  data: { controller: "datepicker" }
-                } %>
-    <%= f.input :end_date,
-                as: :string,
-                label: "End Date",
-                input_html: {
-                  data: { controller: "datepicker" }
+                  data: { controller: "datepicker",
+                  datepicker_bookings: @all_bookings.to_json
+                  }
                 } %>
   </div>
 
-    <%= f.submit "Book me baby, book me hard!", class: "btn btn-primary" %>
+    <%= f.submit "Book me baby, book me hard!", class: "btn btn-search" %>
+
 <% end %>

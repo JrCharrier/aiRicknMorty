@@ -11,3 +11,12 @@
 @import "pages/index";
 @import "components/index";
 @import "planet"; 
+
+
+html {
+  cursor: asset-url('pickle.cur'), auto;
+}
+
+a:hover {
+  cursor: asset-url('pickle.cur'), auto;
+}

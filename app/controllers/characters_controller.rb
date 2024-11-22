@@ -2,7 +2,11 @@ class CharactersController < ApplicationController
 before_action :set_character, only: [:show, :edit, :update, :destroy]
 
   def index
-    @characters = Character.all
+    if params[:query].present?
+      @find_character = Character.global_search(params[:query])
+    else
+      @find_character = Character.all
+    end
   end
 
   def show
@@ -10,6 +14,9 @@ before_action :set_character, only: [:show, :edit, :update, :destroy]
     @character.bookings
     end
     @booking = Booking.new(character: @character)
+    @all_bookings = Booking.pluck(:start_date, :end_date).map do |start_date, end_date|
+      [start_date.to_s, end_date.to_s]
+    end
   end
 
   def new
@@ -52,3 +59,8 @@ before_action :set_character, only: [:show, :edit, :update, :destroy]
     end
   end
 end
+
+
+
+# dans la vue show
+# mettre en valeur

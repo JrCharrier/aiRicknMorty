@@ -15,6 +15,7 @@
   color: $white;
   padding: 30px 20px;
   font-size: 14px;
+  border-radius: 12px;
 }
 
 .card-background:hover {
@@ -46,4 +47,10 @@
 .badge {
   background-color: $light_green;
   color: $dark_blue;
+}
+
+.img_bordered {
+  border: 0.3125rem solid white;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
 }

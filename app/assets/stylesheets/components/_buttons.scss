@@ -1,30 +1,32 @@
-
 .btn-search {
   background: linear-gradient(145deg, #6a11cb, #2575fc);
-  color: white; /* Couleur du texte du bouton */
-  border: none; /* Retirer la bordure si tu veux un look plus net */
-  padding: 10px 20px; /* Ajuste l'espacement interne */
-  border-radius: 25px; /* Bord arrondi */
-  font-weight: bold; /* Texte en gras */
-  font-size: 16px; /* Taille de police ajustée */
-  display: flex; /* Utiliser Flexbox pour aligner l'icône et le texte */
-  align-items: center; /* Centrer verticalement l'icône et le texte */
-  gap: 8px; /* Espacement entre l'icône et le texte */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition pour effet interactif */
+  color: white;
+  border: none;
+  padding: 10px 20px; /* Ajuste le padding si nécessaire */
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 16px;
+  display: inline-flex; /* Assure-toi que c'est en 'inline-flex' pour avoir un comportement de bloc mais sans toute la largeur */
+  justify-content: center; /* Centre le texte horizontalement */
+  align-items: center; /* Centre le texte verticalement */
+  text-align: center; /* Assure-toi que le texte est bien centré à l'intérieur */
+  gap: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 150px; /* Minimum width pour éviter que le bouton ne soit trop petit */
 }
 
 .btn-search i {
-  font-size: 18px; /* Ajuste la taille de l'icône */
+  font-size: 18px;
 }
 
 .btn-search:hover {
-  transform: scale(1.05); /* Légèrement agrandi au survol */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus marquée au survol */
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn-search:active {
-  transform: scale(0.98); /* Légère réduction au clic */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre moins marquée au clic */
+  transform: scale(0.98);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -56,4 +58,98 @@
 .btn-spatial:active {
   transform: scale(1.05);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+.btn-cancel {
+  background: linear-gradient(145deg, #ff5f6d, #ffc371); /* Dégradé de rouge à orange */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 16px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 150px;
+}
+
+.btn-cancel i {
+  font-size: 18px;
+}
+
+.btn-cancel:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-cancel:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-back {
+  background: linear-gradient(145deg, #b8b8b8, #dcdcdc); /* Dégradé gris */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 16px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 150px;
+}
+
+.btn-back i {
+  font-size: 18px;
+}
+
+.btn-back:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-back:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-edit {
+  background: linear-gradient(145deg, #42e695, #3bb2b8); /* Dégradé vert à turquoise */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 16px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 150px;
+}
+
+.btn-edit i {
+  font-size: 18px;
+}
+
+.btn-edit:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-edit:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }

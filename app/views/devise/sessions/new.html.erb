@@ -3,25 +3,25 @@
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="card shadow-sm">
-          <div class="text-center text-white">
-            <h2>Log In, Baby!</h2>
+          <div>
+            <h2 class="custom-subtitle text-center">Log In, Baby!</h2>
           </div>
           <div class="card-body">
             <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "needs-validation" }) do |f| %>
               <%= f.error_notification %>
               <div class="form-inputs">
                 <div class="mb-3">
-                  <%= f.input :email, required: true, autofocus: true, label_html: { class: 'form-label' }, input_html: { class: 'form-control', autocomplete: "email" } %>
+                  <%= f.input :email, required: true, autofocus: true, label: false, input_html: { class: 'form-control', autocomplete: "email", placeholder: "Email" } %>
                 </div>
                 <div class="mb-3">
-                  <%= f.input :password, required: true, label_html: { class: 'form-label' }, input_html: { class: 'form-control', autocomplete: "current-password" } %>
+                  <%= f.input :password, required: true, label: false, input_html: { class: 'form-control', autocomplete: "current-password", placeholder: "Password" } %>
                 </div>
                 <div class="mb-3">
-                  <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                  <%= f.input :remember_me, as: :boolean, label: "Remember Me" if devise_mapping.rememberable? %>
                 </div>
               </div>
               <div class="form-actions d-flex justify-content-center">
-                <%= f.button :submit, "Log in", class: "btn btn-search" %>
+                <%= f.button :submit, "Log your f****n a**!", class: "btn btn-search" %>
               </div>
             <% end %>
           </div>

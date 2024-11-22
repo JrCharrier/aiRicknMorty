@@ -25,7 +25,7 @@ class PagesController < ApplicationController
   def approve_booking
     booking = Booking.find(params[:id])
     if booking.update(status: 'approved')
-      redirect_to dashboard_path, notice: 'Réservation approuvée.'
+      redirect_to dashboard_path, notice: 'Booking approved.'
     else
       redirect_to dashboard_path, alert: 'Erreur lors de l\'approbation de la réservation.'
     end
@@ -34,9 +34,13 @@ class PagesController < ApplicationController
   def decline_booking
     booking = Booking.find(params[:id])
     if booking.update(status: 'declined')
-      redirect_to dashboard_path, notice: 'Réservation refusée.'
+      redirect_to dashboard_path, notice: 'Booking declined.'
     else
       redirect_to dashboard_path, alert: 'Erreur lors du refus de la réservation.'
     end
+  end
+
+  def profile
+    @user = current_user
   end
 end

@@ -3,7 +3,9 @@ class Booking < ApplicationRecord
   belongs_to :character
 
   # Validation pour empêcher la réservation si la start_date est après la end_date
+  validates :start_date, presence: true
   validate :start_date_before_end_date
+  validate :no_overlap
 
   # Définir le statut par défaut à "to_be_validated"
   before_create :set_default_status
@@ -18,5 +20,12 @@ class Booking < ApplicationRecord
 
   def set_default_status
     self.status ||= 'to_be_validated'  # Si status est vide, on le définit à "to_be_validated"
+  end
+
+  def no_overlap
+    overlaps = character.bookings.where.not(id: id).where(
+      'start_date < ? AND end_date > ?', end_date, start_date
+    )
+    errors.add(:base, 'Le personnage est déjà réservé pour cette période.') unless overlaps.empty?
   end
 end

@@ -1,27 +1,26 @@
-  <%= simple_form_for(character) do |f| %>
-    <div class="form-group">
-      <%= f.input :name, label: "Character name", input_html: { class: "form-input" }, label_html: { class: "form-label text-white" } %>
+<%= simple_form_for(character, html: { class: "needs-validation" }) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <div class="mb-3">
+      <%= f.input :name, label: false, input_html: { class: "form-control", placeholder: "Character Name" } %>
     </div>
-    <div class="form-group">
-      <%= f.input :description, label: "Type your description here", input_html: { class: "form-input" }, label_html: { class: "form-label text-white" } %>
+    <div class="mb-3">
+      <%= f.input :description, label: false, input_html: { class: "form-control", placeholder: "Type your description" } %>
     </div>
-    <div class="form-group">
-      <%= f.input :gender, input_html: { class: "form-input" }, label_html: { class: "form-label text-white" } %>
+    <div class="mb-3">
+      <%= f.input :gender, collection: Character::GENDERS,prompt: "Select a gender", label: false, input_html: { class: "form-control", placeholder: "Gender" } %>
     </div>
-    <div class="form-group">
-      <%= f.input :planet,
-          collection: Character::PLANETS,
-          prompt: "Select a planet",
-          input_html: { class: "form-input" },
-          label_html: { class: "form-label text-white" } %>
+    <div class="mb-3">
+      <%= f.input :planet, collection: Character::PLANETS, prompt: "Select a planet", label: false, input_html: { class: "form-control", placeholder: "Planet" } %>
     </div>
-    <div class="form-group">
-      <%= f.input :image_url , input_html: { class: "form-input" }, label_html: { class: "form-label text-white" } %>
+    <div class="mb-3">
+      <%= f.input :image_url, label: false, input_html: { class: "form-control", placeholder: "Image URL" } %>
     </div>
-    <div class="form-group">
-      <%= f.input :price, input_html: { class: "form-input" }, label_html: { class: "form-label text-white" } %>
+    <div class="mb-3">
+      <%= f.input :price, label: false, input_html: { class: "form-control", placeholder: "Price" } %>
     </div>
-    <div class="form-actions">
-      <%= f.submit "Submit", class: "btn btn-submit" %>
-    </div>
-  <% end %>
+  </div>
+  <div class="form-actions d-flex justify-content-center">
+    <%= f.button :submit, "Create me chico 🚀", class: "btn btn-search" %>
+  </div>
+<% end %>
