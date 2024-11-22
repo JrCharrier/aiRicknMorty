@@ -7,7 +7,7 @@
       <!-- My Bookings -->
       <div class="col-md-4 mt-2 sticky-column">
         <div class="card shadow">
-          <div class="card-db text-white-db">
+          <div class="card-db text-center text-white-db">
             <h2><i></i> <b>My Bookings</b></h2>
           </div>
 
@@ -48,7 +48,7 @@
       <!-- My Characters -->
       <div class="col-md-4 mt-2 sticky-column">
         <div class="card shadow">
-          <div class="card-db text-white-db">
+          <div class="card-db text-center text-white-db">
             <h2><b>My Characters</b></h2>
           </div>
           <div class="card-body" style="height: 400px; overflow-y: auto;">
@@ -80,8 +80,12 @@
         <div class="card shadow smaller-card card-background-db">
           <a href="<%= profile_path(@user) %>" style="text-decoration: none; color: inherit;">
             <div style="display: flex; align-items: center; transition: transform 0.3s ease;">
-              <div style="margin-right: 20px; width: 100px; height: 100px; overflow: hidden; border-radius: 10%;">
-                <img src="https://www.powertrafic.fr/wp-content/uploads/2023/04/image-ia-exemple.png" alt="User Image" style="width: 100%; height: 100%; object-fit: cover;">
+              <div style="margin-right: 20px;">
+               <% if current_user&.avatar.present? %>
+                  <%= cl_image_tag(@current_user.avatar.key, class: 'avatar-icon-db') %>
+                <% else %>
+                  <%= image_tag('https://static.posters.cz/image/750/affiches-et-posters/rick-and-morty-mr-meeseeks-i51112.jpg', class: 'avatar-icon-db') %>
+                <% end %>
               </div>
               <div>
                 <p class="mb-1"><strong><%= @user.email %></strong></p>
@@ -94,7 +98,7 @@
         </div>
 
         <div class="card shadow small-card">
-          <div class="card-db text-white-db">
+          <div class="card-db text-center text-white-db">
             <h2><i></i> <b>Pending Bookings</b></h2>
           </div>
           <div class="card-body" style="height: 400px; overflow-y: auto;">

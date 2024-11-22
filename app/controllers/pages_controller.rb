@@ -6,6 +6,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    @current_user = current_user
     @my_bookings = current_user.bookings
                             .includes(:character)
                             .order(
