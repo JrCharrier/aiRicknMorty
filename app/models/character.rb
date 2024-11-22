@@ -20,12 +20,14 @@ class Character < ApplicationRecord
     "Interdimensional Cable",
     "Immortality Field Resort",
     "Post-Apocalyptic Earth",
-    "Purge Planet"
+    "Purge Planet",
+    "Testicle Monster Dimension"
   ]
+  
 
   include PgSearch::Model
   pg_search_scope :global_search,
-  against: [ :name, :description ],
+  against: [ :name ],
   associated_against: {
     user: [ :nickname ]
   },
