@@ -23,7 +23,11 @@
             <div class="mb-3">
               <strong>Created:</strong> <%= @user.created_at.strftime("%B %d, %Y") %>
             </div>
-              <%= image_tag "https://www.powertrafic.fr/wp-content/uploads/2023/04/image-ia-exemple.png", alt: "avatar", class: "profile-img" %>
+             <% if current_user&.avatar.present? %>
+                  <%= cl_image_tag(@current_user.avatar.key, class: 'profile-img') %>
+                <% else %>
+                  <%= image_tag('https://static.posters.cz/image/750/affiches-et-posters/rick-and-morty-mr-meeseeks-i51112.jpg', class: 'profile-img') %>
+                <% end %>
               <%= link_to '<i class="fa-solid fa-pen"></i>'.html_safe, "", class: "pencil-edit" %>
             </div>
           </div>
