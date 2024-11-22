@@ -10,7 +10,8 @@ module CharactersHelper
       "Interdimensional Cable" => "interdimensional_cable.png",
       "Immortality Field Resort" => "immortality_field_resort.png",
       "Post-Apocalyptic Earth" => "post_apocalyptic_earth.png",
-      "Purge Planet" => "purge_planet.png"
+      "Purge Planet" => "purge_planet.png",
+      "Testicle Monster Dimension" => "testicle_monster_dimension.png"
     }
     planet_images[planet_name] || "default_planet.png"
 
