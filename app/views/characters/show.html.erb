@@ -5,12 +5,13 @@
 
         <!-- Character Details -->
         <div class="col-md-6">
-          <div class="card-background shadow-sm border-light rounded-4">
+          <div class="card-background shadow-sm border-light">
             <div class="card-body text-center">
               <h1 class="custom-subtitle mb-3"><%= @character.name %></h1>
-              <img class="img-fluid rounded mb-3" src="<%= @character.image_url %>" alt="<%= @character.name %>">
-              <p><strong>Description:</strong> <%= @character.description %></p>
+              <img class="img-fluid  mb-3 img_bordered" src="<%= @character.image_url %>" alt="<%= @character.name %>">
+              <p><strong>Description:</strong> <%= @character.description.capitalize %></p>
               <p><strong>Gender:</strong> <%= @character.gender %></p>
+
             <div id = "planet-container" data-controller = "planettrigger">
               <p id="planet-paragraph">
 
@@ -36,10 +37,10 @@
               <% if @user.owns?(@character)%> 
                 me </p>
               <% else %>
-                <%= @character.user.email %> <%# changer email par nickname %>
+                <%= @character.user.nickname %>
               <% end %></p>
               <p><strong>Price:</strong> <%= @character.price %>€/day</p>
-              
+
               <div class="d-flex justify-content-center gap-2 mt-3">
                 <%= link_to "Back", characters_path, class: "btn btn-back" %>
                 <% if user_signed_in? && current_user.owns?(@character) %>
